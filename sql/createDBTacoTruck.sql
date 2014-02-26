@@ -1,4 +1,5 @@
 CREATE DATABASE TacoTruck;
+USE TacoTruck;
 
 CREATE TABLE `users` (
   `user_id` int(20) NOT NULL,
