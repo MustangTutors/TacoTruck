@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Taco Truck</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+    #map-container {
+        background-color: #f3ead6;
+        border-width: 3px;
+        border-color: #524928;
+        border-style: solid;
+        padding: 10px;
+        margin: 20px;
+        width: 750px;
+        height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #map-canvas {
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_83WMN1-YvBoPV_dUs91e1EM1UnSJ96A&sensor=false">
+    </script>
+    <script type="text/javascript" src="js/findLocation.js"></script>
+</head>
+
+<body>
+    <header>
+        <section id="login">
+            <form id="loginForm">
+                <input type="email" name="email" id="login_email" placeholder="Email" required>
+                <input type="password" name="password" id="login_password" placeholder="Password" required>
+                <input type="submit" value="Login">
+                <a href="#">Register</a>
+            </form>
+        </section>
+
+        <img src="img/taco_truck_logo.png" alt="Taco Truck Logo">
+        <h1>Taco Truck</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#">Order</a></li>
+                <li><a href="#">Find Location</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="map-container"><div id="map-canvas"/></div>
+    </main>
+
+</body>
+
+</html>
