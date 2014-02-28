@@ -2,6 +2,9 @@ nav {
     clear: both;
     height: 50px;
     background-color: #648163;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 nav ul {
@@ -12,7 +15,7 @@ nav ul {
 
 nav li {
     float: left;
-    margin: auto 3%;
+    margin: auto 2.5%;
 }
 
 nav li a {
@@ -36,9 +39,10 @@ nav li a:hover {
 }
 
 header, main {
-    width: 70%;
+    width: 800px;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
+    box-shadow: 4px 4px 4px rgba(82,73,40,0.5); 
 }
 
 header {
@@ -46,6 +50,7 @@ header {
     padding-top: 1%;
     padding-right: 1%;
     padding-left: 1%;
+
 }
 
 header > img {
@@ -97,5 +102,13 @@ form > a#register {
 }
 
 body {
-    background-image: ;
+    background-image: url('../img/pattern.png');
+}
+
+main {
+    background-color: #FDF8DD;
+    height: 1000px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #C8B388;
 }
