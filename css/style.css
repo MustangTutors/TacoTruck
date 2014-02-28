@@ -1,0 +1,54 @@
+nav {
+    clear: both;
+    height: 50px;
+    background-color: #DDDDDD;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: .3em;
+}
+
+nav li {
+    float: left;
+    margin: auto 5%;
+}
+
+nav li a {
+    display: block;
+    padding: .5em;
+}
+
+nav li a:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), to(#EEEEEE));
+}
+
+header, main {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header {
+    background-color: #DDDDDD;
+}
+
+header > img {
+    float: left;
+    width: 150px;
+}
+
+header > h1 {
+    font-size: 45px;
+    margin: 0px;
+}
+
+section#login {
+    float: right;
+    margin-top: 15px;
+}
+
+#login_email, #login_password {
+    width: 120px;
+}
