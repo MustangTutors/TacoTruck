@@ -1,7 +1,7 @@
 nav {
     clear: both;
     height: 50px;
-    background-color: #DDDDDD;
+    background-color: #648163;
 }
 
 nav ul {
@@ -12,34 +12,37 @@ nav ul {
 
 nav li {
     float: left;
-    margin: auto 5%;
+    margin: auto 3%;
 }
 
 nav li a {
     display: block;
     padding: .5em;
-    background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#DDDDDD));
+    background: -webkit-gradient(linear, left top, left bottom, from(#DF7F7F), to(#9E3C3B));
     border-style: solid;
     border-width: 0.1em;
-    border-color: #BBBBBB;
+    border-color: #7C1A19;
     border-radius: 5px 5px 5px 5px;
     text-decoration: none;
-    color: black;
+    text-align: center;
+    color: #FDF8DD;
+    width: 100px;
+    box-shadow: 2px 2px 3px rgba(128,30,29,0.5);
 }
 
 nav li a:hover {
-    background: -webkit-gradient(linear, left top, left bottom, from(#DDDDDD), to(#EEEEEE));
-    color: white;
+    background: -webkit-gradient(linear, left top, left bottom, from(#9E3C3B), to(#DF7F7F));
+    color: #FFFFFF;
 }
 
 header, main {
     width: 70%;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; 
 }
 
 header {
-    background-color: #DDDDDD;
+    background-color: #648163;
     padding-top: 1%;
     padding-right: 1%;
     padding-left: 1%;
@@ -48,11 +51,14 @@ header {
 header > img {
     float: left;
     width: 150px;
+    margin-right: 10px;
 }
 
 header > h1 {
     font-size: 45px;
     margin: 0px;
+    color: #DBF8DA;
+    text-shadow: 3px 3px rgba(82,73,40,0.5);
 }
 
 section#login {
@@ -62,4 +68,34 @@ section#login {
 
 #login_email, #login_password {
     width: 120px;
+    margin-right: 2px;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.button {
+    background: -webkit-gradient(linear, left top, left bottom, from(#DACFAF), to(#857E5B));
+    border-style: solid;
+    border-width: 0.1em;
+    border-color: #524928;
+    border-radius: 5px 5px 5px 5px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 2px 2px 2px rgba(82,73,40,0.5);
+}
+
+.button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#857E5B), to(#DACFAF));
+    color: #FDF8DD;
+}
+
+.small {
+    font-size: .8em;
+}
+
+form > a#register {
+    padding: 1px 4px 1px 4px;
+}
+
+body {
+    background-image: ;
 }
