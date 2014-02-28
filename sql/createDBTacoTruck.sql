@@ -2,7 +2,7 @@ CREATE DATABASE TacoTruck;
 USE TacoTruck;
 
 CREATE TABLE `users` (
-  `user_id` int(20) NOT NULL,
+  `user_id` int(20) NOT NULL AUTO_INCREMENT,
   `fName` varchar(30) NOT NULL,
   `lName` varchar(30) NOT NULL,
   `credit_provider` varchar(30) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `users` (
 
 CREATE TABLE `locations` (
   `loc_name` varchar(30) NOT NULL,
-  `loc_id` int(20) NOT NULL,
+  `loc_id` int(20) NOT NULL AUTO_INCREMENT,
   `city` varchar(30) NOT NULL,
   `street` varchar(30) NOT NULL,
   `zip` int(20) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `toppings` (
-  `topping_id` int(20) NOT NULL,
+  `topping_id` int(20) NOT NULL AUTO_INCREMENT,
   `topping_name` varchar(30) NOT NULL,
   `topping_heat` int(20) NOT NULL,
   `topping_price` int(20) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `toppings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `orders` (
-  `order_id` int(20) NOT NULL,
+  `order_id` int(20) NOT NULL AUTO_INCREMENT,
   `user_id` int(20) NOT NULL,
   `order_dates` datetime NOT NULL,
   PRIMARY KEY (`order_id`),
@@ -41,7 +41,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tacos` (
-  `taco_id` int(20) NOT NULL,
+  `taco_id` int(20) NOT NULL AUTO_INCREMENT,
   `quantity` int(20) NOT NULL,
   `order_id` int(20) NOT NULL,
   PRIMARY KEY (`taco_id`),
@@ -50,7 +50,7 @@ CREATE TABLE `tacos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tacoToppings` (
-  `tacoTopping_id` int(20) NOT NULL,
+  `tacoTopping_id` int(20) NOT NULL AUTO_INCREMENT,
   `topping_id` int(20) NOT NULL,
   `taco_id` int(20) NOT NULL,
   PRIMARY KEY (`tacoTopping_id`),
