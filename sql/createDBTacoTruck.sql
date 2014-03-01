@@ -7,7 +7,7 @@ CREATE TABLE `users` (
   `lName` varchar(30) NOT NULL,
   `credit_provider` varchar(30) NOT NULL,
   `credit_number` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL UNIQUE KEY,
   `pswd` varchar(20) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
