@@ -204,6 +204,7 @@ section#orders {
     border-width: 4px;
     padding: 0px 10px;
     display:table-cell;
+    padding-bottom: 10px;
 }
 
 section#createTaco img {
@@ -308,7 +309,7 @@ article#previousOrder {
 }
 
 .tacoItem {
-    width: 40%;
+    width: 45%;
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
@@ -348,12 +349,10 @@ div.indivTacoPrice {
     padding: 3px;
     background-color: #FCF8E2;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .delete {
-    float: right;
-}
-
-article#totalPrice {
-    text-align: center;
+    position: absolute;
+    left: 87%;
 }
