@@ -4,7 +4,7 @@ nav {
     clear: both;
     height: 50px;
     background-color: #648163;
-    width: 800px;
+    width: 790px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -17,7 +17,7 @@ nav ul {
 
 nav li {
     float: left;
-    margin: auto 1.2%;
+    margin: auto 1.1%;
 }
 
 nav li:last-child {
@@ -96,6 +96,10 @@ section#login {
     text-decoration: none;
     color: black;
     box-shadow: 2px 2px 2px rgba(82,73,40,0.5);
+    font-size: 0.85em;
+    padding: 3px 4px;
+    width: 120px;
+    margin: 3px;
 }
 
 .button:hover {
@@ -105,11 +109,13 @@ section#login {
 
 .small {
     font-size: .75em;
+    margin: 2px;
+    width: auto;
 }
 
-form > a#register {
+/*form > a#register {
     padding: 1px 4px 1px 4px;
-}
+}*/
 
 body {
     background-image: url('../img/old_map.png');
@@ -203,10 +209,10 @@ input[type="text"], input[type="email"], input[type="password"] {
    margin-top: 10px;
 }
 
-#register > input {
+/*#register > input {
     width: 100px;
     font-size: .8em;
-}
+}*/
 
 .heading {
     text-align: center;
@@ -224,6 +230,7 @@ section#createTaco {
     width: 65%;
     padding-left: 20px;
     display: table-cell;
+    padding-bottom: 10px;
 }
 
 section#orders {
@@ -386,4 +393,7 @@ div.indivTacoPrice {
 .delete {
     position: absolute;
     left: 87%;
+    width: auto;
+    padding-right: 7px;
+    padding-left: 7px;
 }
