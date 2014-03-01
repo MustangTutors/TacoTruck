@@ -59,17 +59,21 @@ header {
 
 }
 
-header > img {
+header > a img {
     float: left;
     width: 150px;
     margin-right: 10px;
 }
 
-header > h1 {
+header > a h1 {
     font-size: 45px;
     margin: 0px;
     color: #DBF8DA;
     text-shadow: 3px 3px rgba(82,73,40,0.5);
+}
+
+header a {
+    text-decoration: none;
 }
 
 section#login {
