@@ -1,8 +1,15 @@
+@import url(http://fonts.googleapis.com/css?family=Amethysta);
+
 nav {
     clear: both;
     height: 50px;
     background-color: #648163;
-    width: 820px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#nav {
     margin-left: auto;
     margin-right: auto;
 }
@@ -16,6 +23,10 @@ nav ul {
 nav li {
     float: left;
     margin: auto 1.2%;
+}
+
+nav li:last-child {
+    /*margin: 0;*/
 }
 
 nav li a {
