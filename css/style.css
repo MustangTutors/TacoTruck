@@ -38,7 +38,7 @@ nav li a:hover {
     color: #FFFFFF;
 }
 
-header, main {
+header, main, footer {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -107,8 +107,32 @@ body {
 
 main {
     background-color: #FDF8DD;
-    height: 1000px;
     border-style: solid;
     border-width: 1px;
     border-color: #C8B388;
+    padding-bottom: 100px;
+}
+
+footer {
+    clear: both;
+    text-align: center;
+    margin: auto;
+    background-color: #524928;
+    height: 20px;
+    width: 800px;
+    color: #F6C34D;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0px;
+}
+
+footer li a {
+    text-decoration: none;
+    color: #F6C34D;
+}
+
+footer li a:hover {
+    color: #FBE6BB;
 }
