@@ -1,0 +1,19 @@
+{
+    "cheese": [
+        {
+            "id": 11,
+            "name": "Queso Fresco",
+            "price": 0.5
+        },
+        {
+            "id": 12,
+            "name": "Cheddar/Jack Mix",
+            "price": 0.35
+        },
+        {
+            "id": 13,
+            "name": "Monterrey Jack",
+            "price": 0.35
+        }
+    ]
+}

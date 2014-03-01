@@ -1,0 +1,24 @@
+{
+    "filling": [
+        {
+            "id": 1,
+            "name": "Steak",
+            "price": 1
+        },
+        {
+            "id": 2,
+            "name": "Chicken",
+            "price": 0.75
+        },
+        {
+            "id": 3,
+            "name": "Carnitas",
+            "price": 1
+        },
+        {
+            "id": 4,
+            "name": "Veggie",
+            "price": 0.5
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+{
+    "sauce": [
+        {
+            "id": 17,
+            "name": "Hot Tomatillo",
+            "heatRating": 3,
+            "price": 0
+        },
+        {
+            "id": 18,
+            "name": "Death",
+            "heatRating": 4,
+            "price": 0
+        },
+        {
+            "id": 19,
+            "name": "Fresh Lime Juice",
+            "heatRating": 1,
+            "price": 0
+        },
+        {
+            "id": 20,
+            "name": "Bad Ass BBQ",
+            "heatRating": 2,
+            "price": 0
+        },
+        {
+            "id": 21,
+            "name": "Mild Tomatillo",
+            "heatRating": 2,
+            "price": 0
+        },
+        {
+            "id": 22,
+            "name": "Ranch",
+            "heatRating": 1,
+            "price": 0
+        },
+        {
+            "id": 23,
+            "name": "No Sauce",
+            "heatRating": 0,
+            "price": 0
+        },
+        {
+            "id": 24,
+            "name": "Habenero",
+            "heatRating": 3,
+            "price": 0
+        },
+        {
+            "id": 25,
+            "name": "Salsa",
+            "heatRating": 2,
+            "price": 0
+        },
+        {
+            "id": 26,
+            "name": "Ancho",
+            "heatRating": 1,
+            "price": 0
+        },
+        {
+            "id": 27,
+            "name": "Tomatillo",
+            "heatRating": 1,
+            "price": 0
+        },
+        {
+            "id": 28,
+            "name": "Herb Vinigrette",
+            "heatRating": 1,
+            "price": 0
+        }
+    ]
+}

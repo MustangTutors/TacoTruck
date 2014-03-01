@@ -1,0 +1,19 @@
+{
+    "beans": [
+        {
+            "id": 14,
+            "name": "Refried Beans",
+            "price": 0.35
+        },
+        {
+            "id": 15,
+            "name": "Whole Pinto Beans",
+            "price": 0.25
+        },
+        {
+            "id": 16,
+            "name": "Black Beans",
+            "price": 0.1
+        }
+    ]
+}
