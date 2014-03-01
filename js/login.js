@@ -1,9 +1,5 @@
 $(document).ready(function() {
-
-		console.log("asdfasdf");
-	$("form#loginForm").submit(function(event) {
-		console.log("asdf");
-		event.preventDefault();
+	$(document).on('click', "form#loginForm input[type='submit']", function(event) {
 		//var request = new XMLHttpRequest();
 		//var url = "localhost/TacoTruck/index.html";
 
