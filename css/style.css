@@ -150,15 +150,42 @@ footer li a:hover {
     color: #FBE6BB;
 }
 
+#map-container {
+    background-color: #f3ead6;
+    border-width: 3px;
+    border-color: #524928;
+    border-style: solid;
+    padding: 10px;
+    margin: 20px;
+    width: 90%;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map-canvas {
+    height: 100%;
+    width: 100%;
+}
+    
+#about {
+    margin: 0px 30px 30px 30px;
+}
+
+article#mailing, article#phone {
+    text-align: center;
+}
+
 #registrationForm {
    width:450px;
    margin-left: auto;
    margin-right: auto;
-
+   margin-bottom: 30px;
 }
+
 #registrationForm label {
    display: inline-block;
-   width: 170px;
+   width: 190px;
 }
 
 input[type="text"], input[type="email"], input[type="password"] {
@@ -334,7 +361,7 @@ div.tacoQuantity {
 }
 
 div.tacoQuantity input {
-    width: 20px;
+    width: 30px;
 }
 
 div.indivTacoPrice {
