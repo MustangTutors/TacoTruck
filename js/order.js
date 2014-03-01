@@ -44,4 +44,33 @@ $(document).ready(function(){
 			$("#selectAllExtras").html("Select All");
 		}
 	})
+
+	// Cancel taco and clear all selections
+	$("#cancelTaco").click(function(event){
+		// Remove the class from the previous tortilla and filling selections
+		$("#tortillaSelection .pictureBox[class~='selected']").removeClass("selected");
+		$("#fillingSelection .pictureBox[class~='selected']").removeClass("selected");
+		
+		// Add the class to the first option for tortilla and filling	
+		$("#tortillaSelection .pictureBox:first-of-type").addClass("selected");
+		$("#fillingSelection .pictureBox:first-of-type").addClass("selected");
+
+		// Make dropdowns be 'none'
+		$("#createTaco .dropdown").val('none');
+
+		// Deselect all vegetables
+		$("#vegetableSelection input[type='checkbox']").prop('checked', false);
+		$("#selectAllVegetables").html("Select All");
+
+		// Deselect all extras
+		$("#extraSelection input[type='checkbox']").prop('checked', false);
+		$("#selectAllExtras").html("Select All");
+
+		// Reset Quantity
+		$("#quantitySelection input[name='quantity']").val(1);
+
+		// Reset Price
+		$("#indivPrice .price").html("$0.00");
+		$("#totalPrice .price").html("$0.00");
+	})
 });
