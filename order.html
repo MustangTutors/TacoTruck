@@ -15,26 +15,27 @@
 
     <main>
         <section id="createTaco">
-            <h2>Create a Taco</h2>
+            <h2 class="heading">Create a Taco</h2>
             <article id="tortillaSelection">
                 <h3>Choose a Tortilla</h3>
                 <div class="pictureView">
-                    <div class="pictureBox">
+                    <div class="pictureBox selected">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
+                    <div class="holder"></div>
                 </div>
             </article>
 
@@ -43,26 +44,27 @@
                 <div class="pictureView">
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
                     <div class="pictureBox">
                         <img src="img/tortilla/5.png">
-                        <span>Name</span>
+                        <br/><span>Name</span>
                     </div>
+                    <div class="holder"></div>
                 </div>
             </article>
 
-            <article id="riceSelection">
+            <article class="floating" id="riceSelection">
                 <h3>Choose a Rice</h3>
-                <select>
+                <select class="dropdown">
                     <option value="none">None</option>
                     <option value="">Name</option>
                     <option value="">Name</option>
@@ -70,9 +72,9 @@
                 </select>
             </article>
 
-            <article id="beanSelection">
+            <article class="floating" id="beanSelection">
                 <h3>Choose Beans</h3>
-                <select>
+                <select class="dropdown">
                     <option value="none">None</option>
                     <option value="">Name</option>
                     <option value="">Name</option>
@@ -80,9 +82,9 @@
                 </select>
             </article>
 
-            <article id="cheeseSelection">
+            <article class="floating" id="cheeseSelection">
                 <h3>Choose a Cheese</h3>
-                <select>
+                <select class="dropdown">
                     <option value="none">None</option>
                     <option value="">Name</option>
                     <option value="">Name</option>
@@ -90,9 +92,9 @@
                 </select>
             </article>
 
-            <article id="sauceSelection">
+            <article class="floating" id="sauceSelection">
                 <h3>Choose a Sauce</h3>
-                <select>
+                <select class="dropdown">
                     <option value="none">None</option>
                     <option value="">Name</option>
                     <option value="">Name</option>
@@ -100,53 +102,107 @@
                 </select>
             </article>
 
-            <article id="vegetableSelection">
+            <article class="floating" id="vegetableSelection">
                 <h3>Select Vegetables:</h3>
-                <label for="vegetable1">Name</label>
-                <input type="checkbox" name="vegetables" id="vegetable1" value="">
-                <label for="vegetable2">Name</label>
-                <input type="checkbox" name="vegetables" id="vegetable2" value="">
-                <label for="vegetable3">Name</label>
-                <input type="checkbox" name="vegetables" id="vegetable3" value="">
-                <label for="vegetable4">Name</label>
-                <input type="checkbox" name="vegetables" id="vegetable4" value="">
-                <button class="button" id="selectAllVegetables">Select All</button>
+                <div class="checking">
+                    <input type="checkbox" name="vegetables" id="vegetable1" value="">
+                    <label for="vegetable1">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="vegetables" id="vegetable2" value="">
+                    <label for="vegetable2">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="vegetables" id="vegetable3" value="">
+                    <label for="vegetable3">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="vegetables" id="vegetable4" value="">
+                    <label for="vegetable4">Name</label>
+                </div>
+                <div class="center">
+                    <button class="button" id="selectAllVegetables">Select All</button>
+                </div>
             </article>
 
-            <article id="extraSelection">
+            <article class="floating" id="extraSelection">
                 <h3>Select Extras:</h3>
-                <label for="extra1">Name</label>
-                <input type="checkbox" name="extras" id="extra1" value="">
-                <label for="extra2">Name</label>
-                <input type="checkbox" name="extras" id="extra2" value="">
-                <label for="extra3">Name</label>
-                <input type="checkbox" name="extras" id="extra3" value="">
-                <label for="extra4">Name</label>
-                <input type="checkbox" name="extras" id="extra4" value="">
-                <button class="button" id="selectAllExtras">Select All</button>
+                <div class="checking">
+                    <input type="checkbox" name="extras" id="extra1" value="">
+                    <label for="extra1">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="extras" id="extra2" value="">
+                    <label for="extra2">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="extras" id="extra3" value="">
+                    <label for="extra3">Name</label>
+                </div>
+                <div class="checking">
+                    <input type="checkbox" name="extras" id="extra4" value="">
+                    <label for="extra4">Name</label>
+                </div>
+                <div class="center">
+                    <button class="button" id="selectAllExtras">Select All</button>
+                </div>
             </article>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+              <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
             <article id="quantitySelection">
                 <span class="subtitle">Select Quantity:</span>
                 <input type="number" value="1" min="1" max="100" name="quantity">
             </article>
 
-            <article id="indivPrice">
-                <span class="subtitle">Price/Taco:</span>
-                <span class="price">$0.00</span>
-            </article>
+            <div id="price">
+                <article id="indivPrice">
+                    <span class="subtitle">Price/Taco:</span>
+                    <span class="price">$0.00</span>
+                </article>
 
-            <article id="totalPrice">
-                <span class="subtitle">Total Price:</span>
-                <span class="price">$0.00</span>
-            </article>
+                <article id="totalPrice">
+                    <span class="subtitle">Total Price:</span>
+                    <span class="price">$0.00</span>
+                </article>
+            </div>
 
-            <button class="button" id="cancelTaco">Cancel Taco</button>
-            <button class="button" id="addToOrder">Add to Order</button>
+            <div class="center">
+                <button class="button" id="cancelTaco">Cancel Taco</button>
+                <button class="button" id="addToOrder">Add to Order</button>
+            </div>
         </section>
 
         <section id="orders">
-            <h2>Order</h2>
+            <h2 class="heading">Order</h2>
 
             <article id="previousOrder">
                 <h3>Previous Order</h3>
@@ -271,6 +327,7 @@
             <button class="button" id="cancelOrder">Cancel</button>
             <button class="button" id="submitOrder">Pay</button>
         </section>
+        <section class="holder"></section>
     </main>
 
     <footer>
