@@ -315,7 +315,7 @@ article#quantitySelection {
 
 section#createTaco article div.checking {
     display: inline-block;
-    width: 45%;
+    width: 50%;
     vertical-align: top;
 }
 
@@ -332,13 +332,15 @@ div.center {
 }
 
 article#quantitySelection {
-    display: inline-block;
+    /*display: inline-block;*/
     width: 54%;
+    float:left;
 }
 
 div#price {
-    display: inline-block;
+    /*display: inline-block;*/
     width: 30%;
+    float:right;
 }
 
 article#previousOrder {
@@ -405,4 +407,9 @@ div.indivTacoPrice {
 .error {
     color: #9E3C3B;
     font-weight: bold;
+}
+
+.smallFont {
+    font-size: 0.8em;
+    word-wrap: break-word;
 }
