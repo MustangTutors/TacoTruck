@@ -120,6 +120,7 @@ main {
     border-color: #C8B388;
     height: 100%;
     position: relative;
+    padding-bottom: 10px;
 }
 
 footer {
@@ -231,7 +232,7 @@ section#orders img {
 
 .selected {
     border-color: #9E3C3B;
-    border-style: dashed;
+    border-style: dotted;
     padding-top: 2px;
 }
 
@@ -297,12 +298,66 @@ section#orders {
     background-color: #FBE6BB;
     border-color: #C8B388;
     border-style: dashed;
-    height: 100%;
+    border-width: 4px;
+    height: 99.2%;
     position: absolute;
     margin-left: 67%;
+    padding: 0px 10px;
 }
 
 article#previousOrder {
     border-style: solid;
     border-color: #524928;
+    padding: 10px;
+    background-color: #EAD5AA;
+}
+
+.tacoItem {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.tacoItem img {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #648163;
+    vertical-align: middle;
+    margin-bottom: 2px;
+}
+
+.tacoLabel {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+div.tacoQuantity {
+    width: 55%;
+    display: inline-block;
+}
+
+div.tacoQuantity input {
+    width: 20px;
+}
+
+div.indivTacoPrice {
+    width: 40%;
+    display: inline-block;
+}
+
+.taco {
+    border-style: solid;
+    border-color: #746B4A;
+    border-width: 2px;
+    padding: 3px;
+    background-color: #FCF8E2;
+    margin-bottom: 15px;
+}
+
+.delete {
+    float: right;
+}
+
+article#totalPrice {
+    text-align: center;
 }

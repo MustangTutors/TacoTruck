@@ -147,36 +147,6 @@
                     <button class="button" id="selectAllExtras">Select All</button>
                 </div>
             </article>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-              <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
 
             <article id="quantitySelection">
                 <span class="subtitle">Select Quantity:</span>
@@ -220,6 +190,7 @@
                     <hr>
 
                     <span class="tacoLabel">Toppings</span>
+                    <br/>
 
                     <div class="tacoItem">
                         <img src="img/tortilla/5.png">
@@ -243,16 +214,20 @@
 
                     <div class="indivTacoPrice">
                         <span class="tacoPrice">$5.00</span>
-                        <span class="tacoLabel">/each</span>
+                        <span class="tacoLabel">/ea</span>
                     </div>
                 </div>
-                <label for="useLastOrder">Add to Order</label>
-                <input type="checkbox" name="useLastOrder" id="useLastOrder">
+
+                <div class="center">
+                    <input type="checkbox" name="useLastOrder" id="useLastOrder">
+                    <label for="useLastOrder">Add to Order</label>
+                </div>
             </article>
 
             <article id="currentOrder">
                 <div class="taco">
                     <button class="button delete">X</button>
+                    <br/>
 
                     <div class="tacoItem">
                         <img src="img/tortilla/5.png">
@@ -266,6 +241,7 @@
                     <hr>
 
                     <span class="tacoLabel">Toppings</span>
+                    <br/>
 
                     <div class="tacoItem">
                         <img src="img/tortilla/5.png">
@@ -289,12 +265,13 @@
 
                     <div class="indivTacoPrice">
                         <span class="tacoPrice">$5.00</span>
-                        <span class="tacoLabel">/each</span>
+                        <span class="tacoLabel">/ea</span>
                     </div>
                 </div>
 
                 <div class="taco">
                     <button class="button delete">X</button>
+                    <br/>
                     
                     <div class="tacoItem">
                         <img src="img/tortilla/5.png">
@@ -314,18 +291,72 @@
 
                     <div class="indivTacoPrice">
                         <span class="tacoPrice">$5.00</span>
-                        <span class="tacoLabel">/each</span>
+                        <span class="tacoLabel">/ea</span>
+                    </div>
+                </div>
+
+                <div class="taco">
+                    <button class="button delete">X</button>
+                    <br/>
+                    
+                    <div class="tacoItem">
+                        <img src="img/tortilla/5.png">
+                        <span>Name</span>
+                    </div>
+                    <div class="tacoItem">
+                        <img src="img/tortilla/5.png">
+                        <span>Name</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="tacoQuantity">
+                        <span class="tacoLabel">Quantity:</span>
+                        <input type="number" value="1" min="1" max="100" name="quantity">
+                    </div>
+
+                    <div class="indivTacoPrice">
+                        <span class="tacoPrice">$5.00</span>
+                        <span class="tacoLabel">/ea</span>
+                    </div>
+                </div>
+
+                <div class="taco">
+                    <button class="button delete">X</button>
+                    <br/>
+                    
+                    <div class="tacoItem">
+                        <img src="img/tortilla/5.png">
+                        <span>Name</span>
+                    </div>
+                    <div class="tacoItem">
+                        <img src="img/tortilla/5.png">
+                        <span>Name</span>
+                    </div>
+
+                    <hr>
+
+                    <div class="tacoQuantity">
+                        <span class="tacoLabel">Quantity:</span>
+                        <input type="number" value="1" min="1" max="100" name="quantity">
+                    </div>
+
+                    <div class="indivTacoPrice">
+                        <span class="tacoPrice">$5.00</span>
+                        <span class="tacoLabel">/ea</span>
                     </div>
                 </div>
             </article>
 
-            <article id="totalOrderPrice">
-                <span class="subtitle">Total price for 5 tacos:</span>
-                <span class="price">$25.00</span>
-            </article>
+            <div class="center">
+                <article id="totalOrderPrice">
+                    <span class="subtitle">Total price for 5 tacos:</span>
+                    <span class="price">$25.00</span>
+                </article>
 
-            <button class="button" id="cancelOrder">Cancel</button>
-            <button class="button" id="submitOrder">Pay</button>
+                <button class="button" id="cancelOrder">Cancel</button>
+                <button class="button" id="submitOrder">Pay</button>
+            </div>
         </section>
         <section class="holder"></section>
     </main>
