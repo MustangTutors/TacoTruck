@@ -100,6 +100,7 @@ section#login {
     padding: 3px 4px;
     width: 120px;
     margin: 5px 3px;
+    font-family: 'Amethysta', serif;
 }
 
 .button:hover {
@@ -113,13 +114,8 @@ section#login {
     width: auto;
 }
 
-/*form > a#register {
-    padding: 1px 4px 1px 4px;
-}*/
-
 body {
     background-image: url('../img/old_map.png');
-    font-family: 'Ovo', serif;
     font-family: 'Amethysta', serif;
 }
 
@@ -404,4 +400,9 @@ div.indivTacoPrice {
     padding-right: 7px;
     padding-left: 7px;
     font-size: 0.65em;
+}
+
+.error {
+    color: #9E3C3B;
+    font-weight: bold;
 }
