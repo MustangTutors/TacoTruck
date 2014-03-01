@@ -73,4 +73,17 @@ $(document).ready(function(){
 		$("#indivPrice .price").html("$0.00");
 		$("#totalPrice .price").html("$0.00");
 	})
+
+	// Cancel entire order
+	$("#cancelOrder").click(function(event){
+		// Uncheck "Add to Order"
+		$("#useLastOrder").prop('checked', false);
+
+		// Remove all tacos
+		$("#currentOrder .taco").remove();
+
+		// Reset price
+		$("#totalOrderPrice .subtitle").html("Total price for 0 tacos: ");
+		$("#totalOrderPrice .price").html("$0.00");
+	})
 });
