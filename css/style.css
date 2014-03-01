@@ -99,7 +99,7 @@ section#login {
     font-size: 0.85em;
     padding: 3px 4px;
     width: 120px;
-    margin: 3px;
+    margin: 5px 3px;
 }
 
 .button:hover {
@@ -384,7 +384,7 @@ div.indivTacoPrice {
     border-style: solid;
     border-color: #746B4A;
     border-width: 2px;
-    padding: 3px;
+    padding: 5px;
     background-color: #FCF8E2;
     margin-bottom: 15px;
     position: relative;
@@ -392,8 +392,10 @@ div.indivTacoPrice {
 
 .delete {
     position: absolute;
+    top: 2px;
     left: 87%;
     width: auto;
     padding-right: 7px;
     padding-left: 7px;
+    font-size: 0.65em;
 }
