@@ -2,15 +2,14 @@ $(document).ready(function() {
 	$(document).on('click', "form#loginForm input[type='submit']", function(event) {
 		//var request = new XMLHttpRequest();
 		//var url = "localhost/TacoTruck/index.html";
+		event.preventDefault();
 
 		var email = $("#login_email").val();
-		var password = $("#login_password").val();
-		console.log(email);
-		console.log(password);
-		console.log("help");
 
+		var welcome = "<h2>Welcome, <span>"+email+"</span></h2>";
 
-		//request.open("POST", url, false);
-		//request.send();
+		$("form#loginForm").hide();
+		$("section#login").html(welcome);
+
 	});
 });
