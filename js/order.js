@@ -17,6 +17,34 @@ $(document).ready(function(){
 		$(this).addClass("selected");
 	});
 
+    // Picture for rice
+    $(document).on('change', "#riceSelection .dropdown", function(event){
+        var id = $(this).val();
+        var url = "img/rice/" + id + ".png";
+        $("#riceSelection img").attr('src', url);
+    });
+
+    // Picture for beans
+    $(document).on('change', "#beanSelection .dropdown", function(event){
+        var id = $(this).val();
+        var url = "img/beans/" + id + ".png";
+        $("#beanSelection img").attr('src', url);
+    });
+
+    // Picture for cheese
+    $(document).on('change', "#cheeseSelection .dropdown", function(event){
+        var id = $(this).val();
+        var url = "img/cheese/" + id + ".png";
+        $("#cheeseSelection img").attr('src', url);
+    });
+
+    // Picture for sauce
+    $(document).on('change', "#sauceSelection .dropdown", function(event){
+        var id = $(this).val();
+        var url = "img/sauce/" + id + ".png";
+        $("#sauceSelection img").attr('src', url);
+    });
+
 	// Select/deselect all vegetables
 	$(document).on('click', "#selectAllVegetables", function(event){
 		// If not selected, select all
@@ -57,6 +85,12 @@ $(document).ready(function(){
 
 		// Make dropdowns be 'none'
 		$("#createTaco .dropdown").val('none');
+
+        // Change pictures back to question mark
+        $("#riceSelection img").attr('src', 'img/none.png');
+        $("#beanSelection img").attr('src', 'img/none.png');
+        $("#cheeseSelection img").attr('src', 'img/none.png');
+        $("#sauceSelection img").attr('src', 'img/none.png');
 
 		// Deselect all vegetables
 		$("#vegetableSelection input[type='checkbox']").prop('checked', false);
@@ -222,47 +256,6 @@ $(document).ready(function(){
             }
         }
     });
-
-// <div class="taco">
-//     <div class="tacoItem tortilla">
-//         <img src="img/tortilla/5.png">
-//         <span>Name</span>
-//     </div>
-//     <div class="tacoItem filling">
-//         <img src="img/tortilla/5.png">
-//         <span>Name</span>
-//     </div>
-
-//     <hr>
-
-//     <span class="tacoLabel">Toppings</span>
-//     <br/>
-
-//     <div class="tacoItem">
-//         <img src="img/tortilla/5.png">
-//         <span>Name</span>
-//     </div>
-//     <div class="tacoItem">
-//         <img src="img/tortilla/5.png">
-//         <span>Name</span>
-//     </div>
-//     <div class="tacoItem">
-//         <img src="img/tortilla/5.png">
-//         <span>Name</span>
-//     </div>
-
-//     <hr>
-
-//     <div class="tacoQuantity">
-//         <span class="tacoLabel">Quantity:</span>
-//         <input type="number" value="1" min="1" max="100" name="quantity">
-//     </div>
-
-//     <div class="indivTacoPrice">
-//         <span class="tacoPrice">$5.00</span>
-//         <span class="tacoLabel">/ea</span>
-//     </div>
-// </div>
 
     // Parse JSON for Previous Order
     $.ajax({

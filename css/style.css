@@ -293,10 +293,12 @@ article h3 {
 
 section#createTaco article.floating:nth-child(odd) {
     float: right;
+    clear: right;
     width: 45%;
 }
 
 section#createTaco article.floating:nth-child(even) {
+    clear: left;
     float: left;
     width: 45%;
 }
@@ -414,4 +416,17 @@ div.indivTacoPrice {
 .smallFont {
     font-size: 0.8em;
     word-wrap: break-word;
+}
+
+section#createTaco img.toppingPic {
+    width: 25px;
+    height: 25px;   
+    vertical-align: middle;
+    border-width: 2px;
+    float: right;
+    margin-right: 12%;
+}
+
+section#createTaco article.floating h3 {
+    display: inline;
 }
