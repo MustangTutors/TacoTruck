@@ -449,7 +449,7 @@ section#payment #paymentBox {
     top: 50%;
     margin-left: -250px;
     margin-top: -150px;
-    padding: 30px;
+    padding: 0px 30px 30px 30px;
     background-color: #FDF8DD;
     border-style: solid;
     border-color: #524928;
@@ -467,4 +467,9 @@ section#payment #paymentBox label {
 
 section#payment div.center {
     padding-top: 20px;
+}
+
+#paymentWindowPrice {
+    margin-bottom: 20px;
+    margin-top: -10px;
 }

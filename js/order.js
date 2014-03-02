@@ -400,4 +400,7 @@ function updateTotalPrice() {
     // Replace the total price with the updated price.
     $("#totalOrderPrice .subtitle").html("Total price for " + totalTacos + " tacos:");
     $("#totalOrderPrice .price").html("$" + total.toFixed(2));
+
+    // Replace the total price with the updated price.
+    $("#paymentWindowPrice").html("Total price for " + totalTacos + " tacos: $" + total.toFixed(2));
 }
