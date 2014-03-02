@@ -192,14 +192,14 @@ $(document).ready(function(){
         // Tortilla object, push onto array
         var topping = new Object();
         topping.name = $("#tortillaSelection .pictureBox[class~='selected'] span").html();
-        topping.id = jQuery($("#tortillaSelection .pictureBox[class~='selected']")[0], 'id');
+        topping.id = jQuery.data($("#tortillaSelection .pictureBox[class~='selected'] span")[0], 'id');
         topping.url = $("#tortillaSelection .pictureBox[class~='selected'] img").attr('src');
         toppings.push(topping);
 
         // Filling object, push onto array
         topping = new Object();
         topping.name = $("#fillingSelection .pictureBox[class~='selected'] span").html();
-        topping.id = jQuery($("#fillingSelection .pictureBox[class~='selected']")[0], 'id');
+        topping.id = jQuery.data($("#fillingSelection .pictureBox[class~='selected'] span")[0], 'id');
         topping.url = $("#fillingSelection .pictureBox[class~='selected'] img").attr('src');
         toppings.push(topping);
 
@@ -281,27 +281,31 @@ $(document).ready(function(){
         // Add topping title
         if(toppings.length > 2) {
             var toppingTitle = $('<span class="tacoLabel">Toppings</span><br/>');
-            toppingTitle.insertBefore("#currentOrder div.tacoQuantity");
+            toppingTitle.insertBefore("#currentOrder .taco:last div.tacoQuantity");
         }
 
         // Add all toppings
         var newTopping;
         for(var j = 2; j < toppings.length; j++) {
             newTopping = $('<div class="tacoItem"><img src="' + toppings[j].url + '"><span class="smallFont">' + toppings[j].name + '</span></div>');
-            newTopping.insertBefore("#currentOrder div.tacoQuantity");
+            newTopping.insertBefore("#currentOrder .taco:last div.tacoQuantity");
         }
 
         // Add line break
         if(toppings.length > 2) {
             var lineBreak = $('<hr>');
-            lineBreak.insertBefore("#currentOrder div.tacoQuantity");
+            lineBreak.insertBefore("#currentOrder .taco:last div.tacoQuantity");
         }
 
         // Update price and cancel current taco
         updateTotalPrice();
         cancelTaco();
 
-        
+        // JSON object stuff
+        var tacoObject = new Object();
+        tacoObject.quantity = quantity;
+        tacoObject.toppings = toppings;
+        jQuery.data($("#currentOrder .taco:last")[0], 'taco', JSON.stringify(tacoObject));
     });
 
     // Parse JSON for Tortilla
@@ -496,10 +500,12 @@ $(document).ready(function(){
                 // Add price
                 var newPrice = $('<span class="tacoPrice">$' + price.toFixed(2) + '</span>');
                 newPrice.insertBefore("#previousOrder .taco:last .indivTacoPrice span.tacoLabel");
+
+                // JSON object stuff
+                jQuery.data($("#previousOrder .taco:last")[0], 'taco', taco);
             }
         }
     });
-
     
 });
 
