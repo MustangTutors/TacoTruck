@@ -158,30 +158,35 @@ $(document).ready(function(){
 
     // Open the payment window when "Pay" is clicked.
     $(document).on('click', '#submitOrder', function() {
-        $("#payment").show();
+        if($("#totalOrderPrice .price").html() === "$0.00"){
+            alert("Please order some tacos before paying!");
+        }
+        else {
+            $("#payment").show();
+            $("#paymentForm").show();
+            $("#proceedToLocation").hide();
+        }
     });
 
-    // Close the payment window when "Cancel" in the Payment window is clicked.
-    $(document).on('click', '#cancelPayment', function() {
+    // Close the payment window when "Cancel" in the Payment window is clicked
+    // Or close when "Close" is pressed
+    $(document).on('click', '.close', function() {
         $("#payment").hide();
     });
 
+    $(document).on('submit', '#paymentForm', function(event){
+        event.preventDefault();
+        cancelOrder();
+        $("#payment").show();
+        $("#paymentForm").hide();
+        $("#proceedToLocation").show();
+    });
 
 	// Cancel taco and clear all selections
 	$(document).on('click', "#cancelTaco", cancelTaco);
 
 	// Cancel entire order
-	$(document).on('click', "#cancelOrder", function(event){
-		// Uncheck "Add to Order"
-		$("#useLastOrder").prop('checked', false);
-
-		// Remove all tacos
-		$("#currentOrder .taco").remove();
-
-		// Reset price
-		$("#totalOrderPrice .subtitle").html("Total price for 0 tacos: ");
-		$("#totalOrderPrice .price").html("$0.00");
-	});
+	$(document).on('click', "#cancelOrder", cancelOrder);
 
     // Add taco to order
     $(document).on('click', "#addToOrder", function(event) {
@@ -622,4 +627,15 @@ function cancelTaco() {
 
     // Reset Price
     updateTacoPrice();
+}
+
+function cancelOrder() {
+    // Uncheck "Add to Order"
+    $("#useLastOrder").prop('checked', false);
+
+    // Remove all tacos
+    $("#currentOrder .taco").remove();
+
+    // Reset price
+    updateTotalPrice();
 }

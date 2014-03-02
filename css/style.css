@@ -473,3 +473,7 @@ section#payment div.center {
     margin-bottom: 20px;
     margin-top: -10px;
 }
+
+#proceedToLocation {
+    display: none;
+}
