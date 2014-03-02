@@ -20,28 +20,52 @@ $(document).ready(function(){
     // Picture for rice
     $(document).on('change', "#riceSelection .dropdown", function(event){
         var id = $(this).val();
-        var url = "img/rice/" + id + ".png";
+        var url;
+        if (id === "none") {
+            url = "img/none.png";
+        }
+        else {
+            url = "img/rice/" + id + ".png";
+        }
         $("#riceSelection img").attr('src', url);
     });
 
     // Picture for beans
     $(document).on('change', "#beanSelection .dropdown", function(event){
         var id = $(this).val();
-        var url = "img/beans/" + id + ".png";
+        var url;
+        if (id === "none") {
+            url = "img/none.png";
+        }
+        else {
+            url = "img/beans/" + id + ".png";
+        }
         $("#beanSelection img").attr('src', url);
     });
 
     // Picture for cheese
     $(document).on('change', "#cheeseSelection .dropdown", function(event){
         var id = $(this).val();
-        var url = "img/cheese/" + id + ".png";
+        var url;
+        if (id === "none") {
+            url = "img/none.png";
+        }
+        else {
+            url = "img/cheese/" + id + ".png";
+        }
         $("#cheeseSelection img").attr('src', url);
     });
 
     // Picture for sauce
     $(document).on('change', "#sauceSelection .dropdown", function(event){
         var id = $(this).val();
-        var url = "img/sauce/" + id + ".png";
+        var url;
+        if (id === "none") {
+            url = "img/none.png";
+        }
+        else {
+            url = "img/sauce/" + id + ".png";
+        }
         $("#sauceSelection img").attr('src', url);
     });
 
