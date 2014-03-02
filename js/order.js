@@ -97,6 +97,23 @@ $(document).ready(function(){
 		}
 	});
 
+    // Update total price when the previous order is added/removed from order.
+    $(document).on('change', '#useLastOrder', function() {
+        updateTotalPrice();
+    });
+
+    // Update total price whenever a quantity is changed.
+    $(document).on('change', '.tacoQuantity input[name="quantity"]', function() {
+        updateTotalPrice();
+    });
+
+    // Remove a taco from order
+    $(document).on('click', '.delete', function() {
+        var taco = $(this).parent();
+        taco.remove();
+        updateTotalPrice();
+    });
+
 	// Cancel taco and clear all selections
 	$(document).on('click', "#cancelTaco", function(event){
 		// Remove the class from the previous tortilla and filling selections
@@ -342,4 +359,34 @@ $(document).ready(function(){
     
 });
 
-  
+function updateTotalPrice() {
+    // Determine if the total price should include items in previous order.
+    var quantitySelector = ".taco .tacoQuantity input[name='quantity']";
+    var priceSelector = ".taco .tacoPrice";
+    if (!$('#useLastOrder').is(":checked")) {
+        quantitySelector = "#currentOrder " + quantitySelector;
+        priceSelector = "#currentOrder " + priceSelector;
+    }
+
+    // Get arrays of elements with quantities and prices.
+    var quantities = $(quantitySelector);
+    var prices = $(priceSelector);
+
+    // Loop through each taco and accumulate the total tacos/price.
+    var totalTacos = 0;
+    var total = 0;
+    for (var i = 0; i < quantities.length; i++) {
+        // Get the quantity of a taco.
+        var quantity = Number(quantities.eq(i).val());
+        // Get the price of a taco and convert it to a number.
+        var price = prices.eq(i).html();
+        price = Number(price.replace(/[^0-9\.]+/g,""));
+        // Update the total using the quantity and price.
+        totalTacos += quantity;
+        total += quantity * price;
+    }
+
+    // Replace the total price with the updated price.
+    $("#totalOrderPrice .subtitle").html("Total price for " + totalTacos + " tacos:");
+    $("#totalOrderPrice .price").html("$" + total.toFixed(2));
+}
