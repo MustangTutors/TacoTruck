@@ -114,6 +114,17 @@ $(document).ready(function(){
         updateTotalPrice();
     });
 
+    // Open the payment window when "Pay" is clicked.
+    $(document).on('click', '#submitOrder', function() {
+        $("#payment").show();
+    });
+
+    // Close the payment window when "Cancel" in the Payment window is clicked.
+    $(document).on('click', '#cancelPayment', function() {
+        $("#payment").hide();
+    });
+
+
 	// Cancel taco and clear all selections
 	$(document).on('click', "#cancelTaco", function(event){
 		// Remove the class from the previous tortilla and filling selections

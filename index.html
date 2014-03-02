@@ -160,7 +160,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="taco">
                     <button class="button delete">X</button>
                     <br/>
@@ -217,6 +217,36 @@
             </div>
         </section>
         <section class="holder"></section>
+
+        <section id="payment">
+            <div id="paymentBox">
+                <h2 class="heading">Payment</h2>
+                <div>
+                    <label for="first_name">First Name: *</label>
+                    <input type="text" name="first_name" id="payment_first" placeholder="Enter First Name" required>
+                </div>
+                <div>
+                    <label for="last_name">Last Name: *</label>
+                    <input type="text" name="last_name" id="payment_last" placeholder="Enter Last Name" required>
+                </div>
+                <div>
+                    <label for="credit_provider">Credit Card Provider: *</label>
+                    <select name="credit_provider" id="payment_provider">
+                        <option value="Visa">Visa</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="American Express">American Express</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="credit_number">Credit Card Number: *</label>
+                    <input type="text" name="credit_number" id="payment_number" placeholder="Enter Credit Card Number" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" title="Must be valid, 16 digit credit card number. Ex: 1234567812345678" required>
+                </div>
+                <div class="center">
+                    <button class="button" id="cancelPayment">Cancel</button>
+                    <button class="button" id="submitPayment">Pay</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
