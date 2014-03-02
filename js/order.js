@@ -222,6 +222,107 @@ $(document).ready(function(){
             }
         }
     });
+
+// <div class="taco">
+//     <div class="tacoItem tortilla">
+//         <img src="img/tortilla/5.png">
+//         <span>Name</span>
+//     </div>
+//     <div class="tacoItem filling">
+//         <img src="img/tortilla/5.png">
+//         <span>Name</span>
+//     </div>
+
+//     <hr>
+
+//     <span class="tacoLabel">Toppings</span>
+//     <br/>
+
+//     <div class="tacoItem">
+//         <img src="img/tortilla/5.png">
+//         <span>Name</span>
+//     </div>
+//     <div class="tacoItem">
+//         <img src="img/tortilla/5.png">
+//         <span>Name</span>
+//     </div>
+//     <div class="tacoItem">
+//         <img src="img/tortilla/5.png">
+//         <span>Name</span>
+//     </div>
+
+//     <hr>
+
+//     <div class="tacoQuantity">
+//         <span class="tacoLabel">Quantity:</span>
+//         <input type="number" value="1" min="1" max="100" name="quantity">
+//     </div>
+
+//     <div class="indivTacoPrice">
+//         <span class="tacoPrice">$5.00</span>
+//         <span class="tacoLabel">/ea</span>
+//     </div>
+// </div>
+
+    // Parse JSON for Previous Order
+    $.ajax({
+        url: "js/getPreviousOrder.json",
+        success: function(json) {
+            for(var i = 0; i < json.previousOrder.length; i++) {
+                var taco = json.previousOrder[i];
+
+                // Create a taco
+                var newTaco = $('<div class=taco>'+'<div class="tacoItem tortilla"><img src="img/tortilla/' + taco.toppings[1].topping_id + '.png">'+
+                                '<span class="smallFont">' + taco.toppings[1].topping_name + '</span></div>' +
+                                '<div class="tacoItem filling"><img src="img/filling/' + taco.toppings[0].topping_id + '.png">'+
+                                '<span class="smallFont">' + taco.toppings[0].topping_name + '</span></div><hr>' +
+                                '<div class="tacoQuantity"><span class="tacoLabel">Quantity:</span>'+
+                                '<input type="number" value="' + taco.quantity + '" min="1" max="100" name="quantity"></div><div class="indivTacoPrice"><span class="tacoLabel">/ea</span></div></div>');
+                
+                newTaco.insertBefore("#previousOrder div.center");
+
+                // Add topping title
+                if(taco.toppings.length > 2) {
+                    var toppingTitle = $('<span class="tacoLabel">Toppings</span><br/>');
+                    toppingTitle.insertBefore("#previousOrder div.tacoQuantity");
+                }
+
+                // Add all toppings
+                var newTopping;
+                var price = taco.toppings[0].topping_price + taco.toppings[1].topping_price;
+                for(var j = 2; j < taco.toppings.length; j++) {
+                    if(taco.toppings[j].topping_type === "vegetable") {
+                        newTopping = $('<div class="tacoItem"><img src="img/vegetable.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                        newTopping.insertBefore("#previousOrder div.tacoQuantity");
+                        price += taco.toppings[j].topping_price;
+                    }
+                    else if(taco.toppings[j].topping_type === "extra") {
+                        newTopping = $('<div class="tacoItem"><img src="img/extra.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                        newTopping.insertBefore("#previousOrder div.tacoQuantity");
+                        price += taco.toppings[j].topping_price;
+                    }
+                    else {
+                        newTopping = $('<div class="tacoItem"><img src="img/' + taco.toppings[j].topping_type + '/' + taco.toppings[j].topping_id + 
+                                        '.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                        newTopping.insertBefore("#previousOrder div.tacoQuantity");
+                        price += taco.toppings[j].topping_price;
+                    }
+                }
+
+                // Add line break
+                if(taco.toppings.length > 2) {
+                    var lineBreak = $('<hr>');
+                    lineBreak.insertBefore("#previousOrder div.tacoQuantity");
+                }
+
+                // Add price
+                var newPrice = $('<span class="tacoPrice">$' + price.toFixed(2) + '</span>');
+                newPrice.insertBefore("#previousOrder .taco:last .indivTacoPrice span.tacoLabel");
+            }
+        }
+    });
+
+    
 });
 
   

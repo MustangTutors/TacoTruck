@@ -351,7 +351,7 @@ article#previousOrder {
 }
 
 .tacoItem {
-    width: 45%;
+    width: 47%;
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
@@ -363,6 +363,7 @@ article#previousOrder {
     border-color: #648163;
     vertical-align: middle;
     margin-bottom: 2px;
+    margin-right: 2px;
 }
 
 .tacoLabel {
@@ -397,11 +398,12 @@ div.indivTacoPrice {
 .delete {
     position: absolute;
     top: 2px;
-    left: 87%;
+    left: 89%;
     width: auto;
-    padding-right: 7px;
-    padding-left: 7px;
+    padding-right: 5px;
+    padding-left: 5px;
     font-size: 0.65em;
+    margin-top: 3px;
 }
 
 .error {
