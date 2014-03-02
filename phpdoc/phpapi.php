@@ -42,9 +42,8 @@ class phpapi()
 	$result = mysql_query($query);
 
 	//MYSQL to JSON
-	while($temp = mysql_fetch_assoc($result))
-		$rows[] = $temp;
-	return json_encode(array($toppingType => $rows));
+	$rows = mysql_fetch_assoc($result);
+	return json_encode(array($toppingID => $rows));
     }
 	
 }
