@@ -6,6 +6,9 @@ $(document).ready(function(){
 		
 		// Add the class to the new selection	
 		$(this).addClass("selected");
+
+        // Update price
+        updateTacoPrice();
 	});
 
 	// Adds/removes selected box around filling on click
@@ -15,6 +18,9 @@ $(document).ready(function(){
 		
 		// Add the class to the new selection
 		$(this).addClass("selected");
+
+        // Update price
+        updateTacoPrice();
 	});
 
     // Picture for rice
@@ -28,6 +34,9 @@ $(document).ready(function(){
             url = "img/rice/" + id + ".png";
         }
         $("#riceSelection img").attr('src', url);
+
+        // Update price
+        updateTacoPrice();
     });
 
     // Picture for beans
@@ -41,6 +50,9 @@ $(document).ready(function(){
             url = "img/beans/" + id + ".png";
         }
         $("#beanSelection img").attr('src', url);
+
+        // Update price
+        updateTacoPrice();
     });
 
     // Picture for cheese
@@ -54,6 +66,9 @@ $(document).ready(function(){
             url = "img/cheese/" + id + ".png";
         }
         $("#cheeseSelection img").attr('src', url);
+
+        // Update price
+        updateTacoPrice();
     });
 
     // Picture for sauce
@@ -67,6 +82,9 @@ $(document).ready(function(){
             url = "img/sauce/" + id + ".png";
         }
         $("#sauceSelection img").attr('src', url);
+
+        // Update price
+        updateTacoPrice();
     });
 
 	// Select/deselect all vegetables
@@ -81,7 +99,16 @@ $(document).ready(function(){
 			$("#vegetableSelection input[type='checkbox']").prop('checked', false);
 			$("#selectAllVegetables").html("Select All");
 		}
+
+        // Update price
+        updateTacoPrice();
 	});
+
+    // Select/deselect individual vegetables (price)
+    $(document).on('click', "#vegetableSelection input[type='checkbox']", function(event){
+        // Update price
+        updateTacoPrice();
+    });
 
 	// Select/deselect all extras
 	$(document).on('click', "#selectAllExtras", function(event){
@@ -95,7 +122,22 @@ $(document).ready(function(){
 			$("#extraSelection input[type='checkbox']").prop('checked', false);
 			$("#selectAllExtras").html("Select All");
 		}
+
+        // Update price
+        updateTacoPrice();
 	});
+
+    // Select/deselect individual extras (price)
+    $(document).on('click', "#extraSelection input[type='checkbox']", function(event){
+        // Update price
+        updateTacoPrice();
+    });
+
+    // Change quantity (price)
+    $(document).on('change', '#quantitySelection input[name="quantity"]', function() {
+        // Update price
+        updateTacoPrice();
+    });
 
     // Update total price when the previous order is added/removed from order.
     $(document).on('change', '#useLastOrder', function() {
@@ -126,39 +168,7 @@ $(document).ready(function(){
 
 
 	// Cancel taco and clear all selections
-	$(document).on('click', "#cancelTaco", function(event){
-		// Remove the class from the previous tortilla and filling selections
-		$("#tortillaSelection .pictureBox[class~='selected']").removeClass("selected");
-		$("#fillingSelection .pictureBox[class~='selected']").removeClass("selected");
-		
-		// Add the class to the first option for tortilla and filling	
-		$("#tortillaSelection .pictureBox:first-of-type").addClass("selected");
-		$("#fillingSelection .pictureBox:first-of-type").addClass("selected");
-
-		// Make dropdowns be 'none'
-		$("#createTaco .dropdown").val('none');
-
-        // Change pictures back to question mark
-        $("#riceSelection img").attr('src', 'img/none.png');
-        $("#beanSelection img").attr('src', 'img/none.png');
-        $("#cheeseSelection img").attr('src', 'img/none.png');
-        $("#sauceSelection img").attr('src', 'img/none.png');
-
-		// Deselect all vegetables
-		$("#vegetableSelection input[type='checkbox']").prop('checked', false);
-		$("#selectAllVegetables").html("Select All");
-
-		// Deselect all extras
-		$("#extraSelection input[type='checkbox']").prop('checked', false);
-		$("#selectAllExtras").html("Select All");
-
-		// Reset Quantity
-		$("#quantitySelection input[name='quantity']").val(1);
-
-		// Reset Price
-		$("#indivPrice .price").html("$0.00");
-		$("#totalPrice .price").html("$0.00");
-	});
+	$(document).on('click', "#cancelTaco", cancelTaco);
 
 	// Cancel entire order
 	$(document).on('click', "#cancelOrder", function(event){
@@ -172,6 +182,127 @@ $(document).ready(function(){
 		$("#totalOrderPrice .subtitle").html("Total price for 0 tacos: ");
 		$("#totalOrderPrice .price").html("$0.00");
 	});
+
+    // Add taco to order
+    $(document).on('click', "#addToOrder", function(event) {
+        // Create a taco
+        // Array of toppings
+        var toppings = new Array();
+
+        // Tortilla object, push onto array
+        var topping = new Object();
+        topping.name = $("#tortillaSelection .pictureBox[class~='selected'] span").html();
+        topping.id = jQuery($("#tortillaSelection .pictureBox[class~='selected']")[0], 'id');
+        topping.url = $("#tortillaSelection .pictureBox[class~='selected'] img").attr('src');
+        toppings.push(topping);
+
+        // Filling object, push onto array
+        topping = new Object();
+        topping.name = $("#fillingSelection .pictureBox[class~='selected'] span").html();
+        topping.id = jQuery($("#fillingSelection .pictureBox[class~='selected']")[0], 'id');
+        topping.url = $("#fillingSelection .pictureBox[class~='selected'] img").attr('src');
+        toppings.push(topping);
+
+        // Rice object, push onto array
+        topping = new Object();
+        topping.id = $("#riceSelection .dropdown").val();
+        // If rice is not none, proceed
+        if(topping.id !== "none"){
+            topping.name = $("#riceSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.url = $("#riceSelection img.toppingPic").attr('src'); 
+            toppings.push(topping);
+        }
+
+        // Beans object, push onto array
+        topping = new Object();
+        topping.id = $("#beanSelection .dropdown").val();
+        // If beans is not none, proceed
+        if(topping.id !== "none"){
+            topping.name = $("#beanSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.url = $("#beanSelection img.toppingPic").attr('src'); 
+            toppings.push(topping);
+        }
+
+        // Cheese object, push onto array
+        topping = new Object();
+        topping.id = $("#cheeseSelection .dropdown").val();
+        // If beans is not none, proceed
+        if(topping.id !== "none"){
+            topping.name = $("#cheeseSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.url = $("#cheeseSelection img.toppingPic").attr('src'); 
+            toppings.push(topping);
+        }
+
+        // Sauce object, push onto array
+        topping = new Object();
+        topping.id = $("#sauceSelection .dropdown").val();
+        // If sauce is not none, proceed
+        if(topping.id !== "none"){
+            topping.name = $("#sauceSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.url = $("#sauceSelection img.toppingPic").attr('src'); 
+            toppings.push(topping);
+        }
+
+        // Get all selected vegetables
+        var veggies = $("#vegetableSelection input[type='checkbox']:checked").parent();
+        for(var i = 0; i < veggies.length; i++) {
+            // Each vegetable object, push onto array
+            topping = new Object();
+            topping.name = veggies.eq(i).children("label").html();
+            topping.id = veggies.eq(i).children("input").val();
+            topping.url = "img/vegetable.png";
+            toppings.push(topping);
+        }
+
+        // Get all selected extras
+        var extras = $("#extraSelection input[type='checkbox']:checked").parent();
+        for(var i = 0; i < extras.length; i++) {
+            // Each extra object, push onto array
+            topping = new Object();
+            topping.name = extras.eq(i).children("label").html();
+            topping.id = extras.eq(i).children("input").val();
+            topping.url = "img/extra.png";
+            toppings.push(topping);
+        }
+
+        var quantity = $("#quantitySelection input[name='quantity']").val();
+        var price = $("div#price article#indivPrice span.price").html();
+
+        var newTaco = $('<div class=taco><button class="button delete">X</button><br/><div class="tacoItem tortilla"><img src="' + 
+                        toppings[0].url + '"><span class="smallFont">' + toppings[0].name + '</span></div>' +
+                        '<div class="tacoItem filling"><img src="' + toppings[1].url + '">'+
+                        '<span class="smallFont">' + toppings[1].name + '</span></div><hr>' +
+                        '<div class="tacoQuantity"><span class="tacoLabel">Quantity:</span>'+
+                        '<input type="number" value="' + quantity + '" min="1" max="100" name="quantity">' + 
+                        '</div><div class="indivTacoPrice"><span class="tacoPrice">' + price + '</span><span class="tacoLabel">/ea</span></div></div>');
+        
+        $("#currentOrder").append(newTaco);
+
+        // Add topping title
+        if(toppings.length > 2) {
+            var toppingTitle = $('<span class="tacoLabel">Toppings</span><br/>');
+            toppingTitle.insertBefore("#currentOrder div.tacoQuantity");
+        }
+
+        // Add all toppings
+        var newTopping;
+        for(var j = 2; j < toppings.length; j++) {
+            newTopping = $('<div class="tacoItem"><img src="' + toppings[j].url + '"><span class="smallFont">' + toppings[j].name + '</span></div>');
+            newTopping.insertBefore("#currentOrder div.tacoQuantity");
+        }
+
+        // Add line break
+        if(toppings.length > 2) {
+            var lineBreak = $('<hr>');
+            lineBreak.insertBefore("#currentOrder div.tacoQuantity");
+        }
+
+        // Update price and cancel current taco
+        updateTotalPrice();
+        cancelTaco();
+
+        
+    });
 
     // Parse JSON for Tortilla
     $.ajax({
@@ -189,6 +320,7 @@ $(document).ready(function(){
 
                 // Save id
                 jQuery.data($("#tortillaSelection .pictureBox span")[i], 'id', json.tortilla[i].id);
+                jQuery.data($("#tortillaSelection .pictureBox span")[i], 'price', json.tortilla[i].price);
             }
 
             // Add the class to the first option for tortilla 
@@ -212,6 +344,7 @@ $(document).ready(function(){
 
                 // Save id
                 jQuery.data($("#fillingSelection .pictureBox span")[i], 'id', json.filling[i].id);
+                jQuery.data($("#fillingSelection .pictureBox span")[i], 'price', json.filling[i].price);
             }
 
             // Add the class to the first option for filling 
@@ -225,7 +358,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.rice.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json.rice[i].id+"'></option>");
+                var newOption = $("<option value='"+json.rice[i].id+"' price='" + json.rice[i].price + "'></option>");
                 $("#riceSelection .dropdown").append(newOption);
 
                 // Add information from JSON
@@ -240,7 +373,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.beans.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json.beans[i].id+"'></option>");
+                var newOption = $("<option value='"+json.beans[i].id+"' price='" + json.beans[i].price + "'></option>");
                 $("#beanSelection .dropdown").append(newOption);
 
                 // Add information from JSON
@@ -255,7 +388,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.cheese.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json.cheese[i].id+"'></option>");
+                var newOption = $("<option value='"+json.cheese[i].id+"' price='" + json.cheese[i].price + "'></option>");
                 $("#cheeseSelection .dropdown").append(newOption);
 
                 // Add information from JSON
@@ -270,7 +403,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.sauce.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json.sauce[i].id+"'></option>");
+                var newOption = $("<option value='"+json.sauce[i].id+"' price='" + json.sauce[i].price + "'></option>");
                 $("#sauceSelection .dropdown").append(newOption);
 
                 // Add information from JSON
@@ -285,7 +418,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.vegetable.length; i++) {
                 // Create and append new node
-                var newOption = $("<div class='checking'><input type='checkbox' name='vegetables' id='vegetable"+i+"' value='" + json.vegetable[i].id + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
+                var newOption = $("<div class='checking'><input type='checkbox' name='vegetables' id='vegetable"+i+"' value='" + json.vegetable[i].id + "' price='" + json.vegetable[i].price + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#vegetableSelection div.center');
 
                 // Add information from JSON
@@ -300,7 +433,7 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.extra.length; i++) {
                 // Create and append new node
-                var newOption = $("<div class='checking'><input type='checkbox' name='extras' id='extra"+i+"' value='" + json.extra[i].id + "'><label for='extra"+i+"' class='smallFont'></label></div>");
+                var newOption = $("<div class='checking'><input type='checkbox' name='extras' id='extra"+i+"' value='" + json.extra[i].id + "' price='" + json.extra[i].price + "'><label for='extra"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#extraSelection div.center');
 
                 // Add information from JSON
@@ -370,6 +503,7 @@ $(document).ready(function(){
     
 });
 
+// Update price for total order
 function updateTotalPrice() {
     // Determine if the total price should include items in previous order.
     var quantitySelector = ".taco .tacoQuantity input[name='quantity']";
@@ -403,4 +537,83 @@ function updateTotalPrice() {
 
     // Replace the total price with the updated price.
     $("#paymentWindowPrice").html("Total price for " + totalTacos + " tacos: $" + total.toFixed(2));
+}
+
+// Update price for each taco
+function updateTacoPrice() {
+    var price = 0;
+
+    // Add price for tortilla and filling
+    price += jQuery.data($("#tortillaSelection .pictureBox[class~='selected'] span")[0], 'price');
+    price += jQuery.data($("#fillingSelection .pictureBox[class~='selected'] span")[0], 'price');
+
+    // Add price for dropdown options
+    // Rice
+    var id = $("#riceSelection .dropdown").val();
+    price += Number($("#riceSelection .dropdown option[value='" + id + "']").attr("price"));
+
+    // Beans
+    id = $("#beanSelection .dropdown").val();
+    price += Number($("#beanSelection .dropdown option[value='" + id + "']").attr("price"));
+
+    // Cheese
+    id = $("#cheeseSelection .dropdown").val();
+    price += Number($("#cheeseSelection .dropdown option[value='" + id + "']").attr("price"));
+
+    // Sauce
+    id = $("#sauceSelection .dropdown").val();
+    price += Number($("#sauceSelection .dropdown option[value='" + id + "']").attr("price"));
+
+    // Add price for vegetables and extras
+    // Vegetables
+    var veggies = $("#vegetableSelection input[type='checkbox']:checked");
+    for(var i = 0; i < veggies.length; i++){
+        price += Number(veggies.eq(i).attr("price"));
+    }
+
+    // Extras
+    var extras = $("#extraSelection input[type='checkbox']:checked");
+    for(var i = 0; i < extras.length; i++){
+        price += Number(extras.eq(i).attr("price"));
+    }
+
+    $("div#price article#indivPrice span.price").html("$" + price.toFixed(2));
+
+    var quantity = $("#quantitySelection input[name='quantity']").val();
+    price *= quantity;
+
+    $("div#price article#totalPrice span.price").html("$" + price.toFixed(2));
+}
+
+function cancelTaco() {
+    // Remove the class from the previous tortilla and filling selections
+    $("#tortillaSelection .pictureBox[class~='selected']").removeClass("selected");
+    $("#fillingSelection .pictureBox[class~='selected']").removeClass("selected");
+    
+    // Add the class to the first option for tortilla and filling   
+    $("#tortillaSelection .pictureBox:first-of-type").addClass("selected");
+    $("#fillingSelection .pictureBox:first-of-type").addClass("selected");
+
+    // Make dropdowns be 'none'
+    $("#createTaco .dropdown").val('none');
+
+    // Change pictures back to question mark
+    $("#riceSelection img").attr('src', 'img/none.png');
+    $("#beanSelection img").attr('src', 'img/none.png');
+    $("#cheeseSelection img").attr('src', 'img/none.png');
+    $("#sauceSelection img").attr('src', 'img/none.png');
+
+    // Deselect all vegetables
+    $("#vegetableSelection input[type='checkbox']").prop('checked', false);
+    $("#selectAllVegetables").html("Select All");
+
+    // Deselect all extras
+    $("#extraSelection input[type='checkbox']").prop('checked', false);
+    $("#selectAllExtras").html("Select All");
+
+    // Reset Quantity
+    $("#quantitySelection input[name='quantity']").val(1);
+
+    // Reset Price
+    updateTacoPrice();
 }
