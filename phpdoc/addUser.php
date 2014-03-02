@@ -7,5 +7,5 @@
 	$password =$_POST['password'];
 	$CCP =$_POST['credit_provider'];
 	$CCN =$_POST['credit_number'];
-	echo ($phpInit->get_UserInfo($fName,$lName,$email,$password,$CCP,$CCN));
+	echo ($phpInit->addUser($fName,$lName,$email,$password,$CCP,$CCN));
 ?>

@@ -1,7 +1,9 @@
 <?php
 
-class phpapi()
+class phpapi
 {
+    private $con;
+
     /**
      * PHP API Constructor. Connects to the MySQL database.
      */
@@ -9,10 +11,10 @@ class phpapi()
     {
         session_start();
 
-        $con = mysqli_connect("localhost", "taco", "taco");
-        if(!$con)
+        $this->con = mysqli_connect("localhost", "taco", "taco");
+        if(!$this->con)
             die('Could not connect: ' . mysqli_error());
-        mysqli_select_db("TacoTruck", $con)
+        mysqli_select_db($this->con, "TacoTruck")
         or die("Unable to select database: " . mysqli_error());
     }
 
@@ -25,7 +27,7 @@ class phpapi()
     {
         // Get all the toppings of a type $toppingType
         $query = "SELECT * FROM tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings WHERE topping_type='$toppingType'";
-        $result = mysqli_query($query);
+        $result = mysqli_query($this->con, $query);
 
         // Convert the MySQL result into JSON.
         $rows = array();
@@ -39,7 +41,7 @@ class phpapi()
     {
 	//Gets the taco topping ID
 	$query = "SELECT taco_id from tacos where topping_ID ='$toppingID'";
-	$result = mysqli_query($query);
+	$result = mysqli_query($this->con, $query);
 
 	//MYSQL to JSON
 	$rows = mysqli_fetch_assoc($result);
@@ -61,8 +63,8 @@ class phpapi()
     {
         // Add user information to users table
         $query = "INSERT INTO users(fName,lName,credit_provider,credit_number,email,pswd) VALUES ('$firstName','$lastName','$CCP','$CCN','$email','$password')";
-        $result = mysqli_query($con,$query);
-	return $result;
+        $result = mysqli_query($this->con,$query);
+	   return $result;
     }
 
 
@@ -76,7 +78,7 @@ class phpapi()
 	// Retrieve location data
         $query = "SELECT * FROM locations";
 	if($id!=-1) $query = $query." WHERE loc_id='$id'";	  
-        $result = mysqli_query($con,$query);
+        $result = mysqli_query($this->con,$query);
 
         // Convert the MySQL result into JSON.
         $rows = array();
@@ -94,7 +96,7 @@ class phpapi()
     {
         // Retrieve user info
         $query = "SELECT * FROM users WHERE user_id='$id'";
-        $result = mysqli_query($con,$query);
+        $result = mysqli_query($this->con,$query);
 	
         // Convert the MySQL result into JSON.
         $rows = array();
@@ -114,13 +116,11 @@ class phpapi()
     {
         // Retrieve list of matching $email/$passwords 
         $query = "SELECT user_id FROM users WHERE email='$email' AND pswd='$password";
-        $result = mysqli_query($con,$query);
+        $result = mysqli_query($this->con,$query);
 	$id=mysqli_fetch_row($result);
 	if($id==NULL) return -1;
 	return $id[0];
     }
-}
-	
 }
 
 ?>
