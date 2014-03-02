@@ -20,6 +20,18 @@
                     "topping_type": "beans",
                     "topping_name": "Black Beans",
                     "topping_price": 0.1
+                },
+                {
+                    "topping_id": 45,
+                    "topping_type": "extra",
+                    "topping_name": "Bacon",
+                    "topping_price": 0.5
+                },
+                {
+                    "topping_id": 39,
+                    "topping_type": "vegetable",
+                    "topping_name": "Lettuce",
+                    "topping_price": 0
                 }
             ]
         },
