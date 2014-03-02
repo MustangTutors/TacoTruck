@@ -9,11 +9,11 @@ class phpapi()
     {
         session_start();
 
-        $con = mysql_connect("localhost", "taco", "taco");
+        $con = mysqli_connect("localhost", "taco", "taco");
         if(!$con)
-            die('Could not connect: ' . mysql_error());
-        mysql_select_db("TacoTruck", $con)
-        or die("Unable to select database: " . mysql_error());
+            die('Could not connect: ' . mysqli_error());
+        mysqli_select_db("TacoTruck", $con)
+        or die("Unable to select database: " . mysqli_error());
     }
 
     /**
@@ -25,11 +25,11 @@ class phpapi()
     {
         // Get all the toppings of a type $toppingType
         $query = "SELECT * FROM tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings WHERE topping_type='$toppingType'";
-        $result = mysql_query($query);
+        $result = mysqli_query($query);
 
         // Convert the MySQL result into JSON.
         $rows = array();
-        while($temp = mysql_fetch_assoc($result))
+        while($temp = mysqli_fetch_assoc($result))
             $rows[] = $temp;
         return json_encode(array($toppingType => $rows));
     }
@@ -39,10 +39,10 @@ class phpapi()
     {
 	//Gets the taco topping ID
 	$query = "SELECT taco_id from tacos where topping_ID ='$toppingID'";
-	$result = mysql_query($query);
+	$result = mysqli_query($query);
 
 	//MYSQL to JSON
-	$rows = mysql_fetch_assoc($result);
+	$rows = mysqli_fetch_assoc($result);
 	return json_encode(array($toppingID => $rows));
     }
 
