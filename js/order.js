@@ -319,13 +319,14 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.tortilla.length; i++) {
                 // Create and append new node
-                var newDiv = $("<div class='pictureBox'><img src=''><br/><span></span></div>");
+                var newDiv = $("<div class='pictureBox'><img src='' alt='tortilla'><br/><span></span></div>");
                 newDiv.insertBefore("#tortillaSelection div.holder");
 
                 // Add information from JSON
                 $("#tortillaSelection .pictureBox span").eq(i).html(json.tortilla[i].name);
                 var url = "img/tortilla/" + json.tortilla[i].id + ".png";
                 $("#tortillaSelection .pictureBox img").eq(i).attr('src', url);
+                $("#tortillaSelection .pictureBox img").eq(i).attr('alt', 'tortilla');
 
                 // Save id
                 jQuery.data($("#tortillaSelection .pictureBox span")[i], 'id', json.tortilla[i].id);
@@ -343,13 +344,14 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.filling.length; i++) {
                 // Create and append new node
-                var newDiv = $("<div class='pictureBox'><img src=''><br/><span></span></div>");
+                var newDiv = $("<div class='pictureBox'><img src='' alt='filling'><br/><span></span></div>");
                 newDiv.insertBefore("#fillingSelection div.holder");
 
                 // Add information from JSON
                 $("#fillingSelection .pictureBox span").eq(i).html(json.filling[i].name);
                 var url = "img/filling/" + json.filling[i].id + ".png";
                 $("#fillingSelection .pictureBox img").eq(i).attr('src', url);
+                $("#fillingSelection .pictureBox img").eq(i).attr('alt', 'filling');
 
                 // Save id
                 jQuery.data($("#fillingSelection .pictureBox span")[i], 'id', json.filling[i].id);
@@ -459,9 +461,9 @@ $(document).ready(function(){
                 var taco = json.previousOrder[i];
 
                 // Create a taco
-                var newTaco = $('<div class=taco>'+'<div class="tacoItem tortilla"><img src="img/tortilla/' + taco.toppings[1].topping_id + '.png">'+
+                var newTaco = $('<div class=taco>'+'<div class="tacoItem tortilla"><img src="img/tortilla/' + taco.toppings[1].topping_id + '.png" alt="tortilla">'+
                                 '<span class="smallFont">' + taco.toppings[1].topping_name + '</span></div>' +
-                                '<div class="tacoItem filling"><img src="img/filling/' + taco.toppings[0].topping_id + '.png">'+
+                                '<div class="tacoItem filling"><img src="img/filling/' + taco.toppings[0].topping_id + '.png" alt="filling">'+
                                 '<span class="smallFont">' + taco.toppings[0].topping_name + '</span></div><hr>' +
                                 '<div class="tacoQuantity"><span class="tacoLabel">Quantity:</span>'+
                                 '<input type="number" value="' + taco.quantity + '" min="1" max="100" name="quantity"></div><div class="indivTacoPrice"><span class="tacoLabel">/ea</span></div></div>');
@@ -479,18 +481,18 @@ $(document).ready(function(){
                 var price = taco.toppings[0].topping_price + taco.toppings[1].topping_price;
                 for(var j = 2; j < taco.toppings.length; j++) {
                     if(taco.toppings[j].topping_type === "vegetable") {
-                        newTopping = $('<div class="tacoItem"><img src="img/vegetable.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                        newTopping = $('<div class="tacoItem"><img src="img/vegetable.png" alt="vegetable"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
                         newTopping.insertBefore("#previousOrder div.tacoQuantity");
                         price += taco.toppings[j].topping_price;
                     }
                     else if(taco.toppings[j].topping_type === "extra") {
-                        newTopping = $('<div class="tacoItem"><img src="img/extra.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                        newTopping = $('<div class="tacoItem"><img src="img/extra.png" alt="extra"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
                         newTopping.insertBefore("#previousOrder div.tacoQuantity");
                         price += taco.toppings[j].topping_price;
                     }
                     else {
                         newTopping = $('<div class="tacoItem"><img src="img/' + taco.toppings[j].topping_type + '/' + taco.toppings[j].topping_id + 
-                                        '.png"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
+                                        '.png" alt="topping"><span class="smallFont">' + taco.toppings[j].topping_name + '</span></div>');
                         newTopping.insertBefore("#previousOrder div.tacoQuantity");
                         price += taco.toppings[j].topping_price;
                     }
@@ -610,9 +612,13 @@ function cancelTaco() {
 
     // Change pictures back to question mark
     $("#riceSelection img").attr('src', 'img/none.png');
+    $("#riceSelection img").attr('alt', 'rice');
     $("#beanSelection img").attr('src', 'img/none.png');
+    $("#beanSelection img").attr('src', 'beans');
     $("#cheeseSelection img").attr('src', 'img/none.png');
+    $("#cheeseSelection img").attr('src', 'cheese');
     $("#sauceSelection img").attr('src', 'img/none.png');
+    $("#sauceSelection img").attr('src', 'sauce');
 
     // Deselect all vegetables
     $("#vegetableSelection input[type='checkbox']").prop('checked', false);
