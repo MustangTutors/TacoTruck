@@ -25,9 +25,9 @@ CREATE TABLE `locations` (
 CREATE TABLE `toppings` (
   `topping_id` int(20) NOT NULL AUTO_INCREMENT,
   `topping_name` varchar(30) NOT NULL,
-  `topping_heat` int(20) NOT NULL,
-  `topping_price` int(20) NOT NULL,
-  `topping_type` int(20) NOT NULL,
+  `topping_heat` int(20),
+  `topping_price` float(20) NOT NULL,
+  `topping_type` varchar(30) NOT NULL,
   PRIMARY KEY (`topping_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
