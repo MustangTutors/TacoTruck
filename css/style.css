@@ -266,6 +266,8 @@ section#orders img {
     text-align: center;
     width: 85px;
     padding-top: 5px;
+    padding-right: 3px;
+    padding-left: 3px;
 }
 
 .pictureView {
@@ -281,6 +283,8 @@ section#orders img {
     border-color: #9E3C3B;
     border-style: dotted;
     padding-top: 2px;
+    padding-right: 0px;
+    padding-left: 0px;
 }
 
 article {
