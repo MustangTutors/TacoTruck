@@ -29,9 +29,11 @@ $(document).ready(function(){
         var url;
         if (id === "none") {
             url = "img/none.png";
+            $("#riceSelection img").css('visibility', 'hidden');
         }
         else {
             url = "img/rice/" + id + ".png";
+            $("#riceSelection img").css('visibility', 'visible');
         }
         $("#riceSelection img").attr('src', url);
 
@@ -45,9 +47,11 @@ $(document).ready(function(){
         var url;
         if (id === "none") {
             url = "img/none.png";
+            $("#beanSelection img").css('visibility', 'hidden');
         }
         else {
             url = "img/beans/" + id + ".png";
+            $("#beanSelection img").css('visibility', 'visible');
         }
         $("#beanSelection img").attr('src', url);
 
@@ -61,9 +65,11 @@ $(document).ready(function(){
         var url;
         if (id === "none") {
             url = "img/none.png";
+            $("#cheeseSelection img").css('visibility', 'hidden');
         }
         else {
             url = "img/cheese/" + id + ".png";
+            $("#cheeseSelection img").css('visibility', 'visible');
         }
         $("#cheeseSelection img").attr('src', url);
 
@@ -77,9 +83,11 @@ $(document).ready(function(){
         var url;
         if (id === "none") {
             url = "img/none.png";
+            $("#sauceSelection img").css('visibility', 'hidden');
         }
         else {
             url = "img/sauce/" + id + ".png";
+            $("#sauceSelection img").css('visibility', 'visible');
         }
         $("#sauceSelection img").attr('src', url);
 
@@ -614,11 +622,17 @@ function cancelTaco() {
     $("#riceSelection img").attr('src', 'img/none.png');
     $("#riceSelection img").attr('alt', 'rice');
     $("#beanSelection img").attr('src', 'img/none.png');
-    $("#beanSelection img").attr('src', 'beans');
+    $("#beanSelection img").attr('alt', 'beans');
     $("#cheeseSelection img").attr('src', 'img/none.png');
-    $("#cheeseSelection img").attr('src', 'cheese');
+    $("#cheeseSelection img").attr('alt', 'cheese');
     $("#sauceSelection img").attr('src', 'img/none.png');
-    $("#sauceSelection img").attr('src', 'sauce');
+    $("#sauceSelection img").attr('alt', 'sauce');
+
+    // Hide pictures
+    $("#riceSelection img").css('visibility', 'hidden');
+    $("#beanSelection img").css('visibility', 'hidden');
+    $("#cheeseSelection img").css('visibility', 'hidden');
+    $("#sauceSelection img").css('visibility', 'hidden');
 
     // Deselect all vegetables
     $("#vegetableSelection input[type='checkbox']").prop('checked', false);

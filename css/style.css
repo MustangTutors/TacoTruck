@@ -429,6 +429,7 @@ section#createTaco img.toppingPic {
     border-width: 2px;
     float: right;
     margin-right: 12%;
+    visibility: hidden;
 }
 
 section#createTaco article.floating h3 {
