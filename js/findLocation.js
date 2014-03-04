@@ -13,14 +13,13 @@ function initialize(locations) {
 
 function codeAddresses(locations) {
   for (var i in locations) {
-    var name = locations[i].name;
-    var address = locations[i].address;
+    var name = locations[i].loc_name;
+    var address = locations[i].street;
     var city = locations[i].city;
     var state = locations[i].state;
-    var zipcode = locations[i].zipcode.toString();
+    var zipcode = locations[i].zip;
     var combinedAddress = address + ", " + city + ", " + state;
     var info = "<h3>" + name + "</h3>" + "<p>" + combinedAddress + ", " + zipcode + "</p>";
-    console.log(info);
     var zip = {'postalCode': zipcode};
     var options = { 'address': combinedAddress, componentRestrictions: zip };
     geocoder.geocode( options, geocodeCallback(info) );
@@ -54,6 +53,6 @@ window.addEventListener('load', function() {
           initialize(JSON.parse(request.responseText)); 
       }
   }
-  request.open("GET", "js/taco_truck_locations.json", true);
+  request.open("GET", "api/locations", true);
   request.send();
 });
