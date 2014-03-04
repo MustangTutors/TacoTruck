@@ -323,7 +323,7 @@ article h3 {
 }
 
 section#createTaco article.floating {
-    width: 45%;
+    width: 48%;
     position: relative;
 }
 
@@ -392,6 +392,7 @@ article#previousOrder {
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
+    margin-right: 3px;
 }
 
 .tacoItem img {
