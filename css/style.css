@@ -301,16 +301,19 @@ article h3 {
     margin: 0px 0px 5px 0px;
 }
 
+section#createTaco article.floating {
+    width: 45%;
+    position: relative;
+}
+
 section#createTaco article.floating:nth-child(odd) {
     float: right;
     clear: right;
-    width: 45%;
 }
 
 section#createTaco article.floating:nth-child(even) {
     clear: left;
     float: left;
-    width: 45%;
 }
 
 article#quantitySelection {
@@ -433,13 +436,11 @@ section#createTaco img.toppingPic {
     height: 25px;   
     vertical-align: middle;
     border-width: 2px;
-    float: right;
     margin-right: 12%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
     visibility: hidden;
-}
-
-section#createTaco article.floating h3 {
-    display: inline;
 }
 
 section#payment {

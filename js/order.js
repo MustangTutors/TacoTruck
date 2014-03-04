@@ -221,7 +221,7 @@ $(document).ready(function(){
         topping.topping_id = $("#riceSelection .dropdown").val();
         // If rice is not none, proceed
         if(topping.topping_id !== "none"){
-            topping.name = $("#riceSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.name = $("#riceSelection .dropdown option[value='" + topping.topping_id + "']").html();
             topping.url = $("#riceSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
         }
@@ -231,7 +231,7 @@ $(document).ready(function(){
         topping.topping_id = $("#beanSelection .dropdown").val();
         // If beans is not none, proceed
         if(topping.topping_id !== "none"){
-            topping.name = $("#beanSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.name = $("#beanSelection .dropdown option[value='" + topping.topping_id + "']").html();
             topping.url = $("#beanSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
         }
@@ -241,7 +241,7 @@ $(document).ready(function(){
         topping.topping_id = $("#cheeseSelection .dropdown").val();
         // If beans is not none, proceed
         if(topping.topping_id !== "none"){
-            topping.name = $("#cheeseSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.name = $("#cheeseSelection .dropdown option[value='" + topping.topping_id + "']").html();
             topping.url = $("#cheeseSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
         }
@@ -251,7 +251,7 @@ $(document).ready(function(){
         topping.topping_id = $("#sauceSelection .dropdown").val();
         // If sauce is not none, proceed
         if(topping.topping_id !== "none"){
-            topping.name = $("#sauceSelection .dropdown option[value='" + topping.id + "']").html();
+            topping.name = $("#sauceSelection .dropdown option[value='" + topping.topping_id + "']").html();
             topping.url = $("#sauceSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
         }
