@@ -84,6 +84,7 @@ section#login {
 #login_email, #login_password {
     width: 120px;
     margin-right: 2px;
+    margin-left: 0px;
     border-radius: 4px 4px 4px 4px;
 }
 
