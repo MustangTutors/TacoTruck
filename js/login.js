@@ -28,6 +28,12 @@ $(document).ready(function() {
 		        $("#login_email").val('');
 		        $("#login_password").val('');
 
+		        // Populate payment information
+		        // $("#payment_first").val(data.first_name);
+		        // $("#payment_last").val(data.last_name);
+		        // $("#payment_provider select>option[value='" + data.provider + "']").prop('selected',true);
+		        // $("#payment_number").val(data.number);
+
 		        // Clear previous order
 		        $("#previousOrder .taco").remove();
 

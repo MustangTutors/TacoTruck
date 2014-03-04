@@ -178,10 +178,12 @@ $(document).ready(function(){
 
     // Close the payment window when "Cancel" in the Payment window is clicked
     // Or close when "Close" is pressed
-    $(document).on('click', '.close', function() {
+    $(document).on('click', '.close', function(event) {
+        event.preventDefault();
         $("#payment").hide();
     });
 
+    // When submit on open payment window
     $(document).on('submit', '#paymentForm', function(event){
         event.preventDefault();
         cancelOrder();
