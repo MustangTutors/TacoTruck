@@ -8,6 +8,7 @@
     getToppingByToppingHeat(heat)
     getToppingByToppingType(type)
 */
+include "../DB.php";
 
     class Toppings{
         public $topping_id;
@@ -74,11 +75,10 @@
         //echos a json object holding topping's info from its type
         public function getToppingByToppingType($toppingType){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_type = ?",array($toppingType));
-            if(isset($attributes[0])){
-                $this->_set($attributes[0]);
+            //if(isset($attributes[0])){
+            //    $this->_set($attributes[0]);
                 echo (json_encode($attributes));
-
-            }
+            //}
             return FALSE;
         }
 

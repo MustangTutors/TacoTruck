@@ -54,8 +54,8 @@
             try{
                 $statement = $this->conn->prepare($query);
                 $statement->execute($params);
-                $results = $statement->fetch(PDO::FETCH_OBJ);
-                return results;
+                $results = $statement->fetchAll(PDO::FETCH_OBJ);
+                return $results;
             }catch(PDOException $e){
                 throw new Exception($e->getMessage());
             }        

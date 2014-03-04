@@ -5,7 +5,9 @@
     getLocations()
 */
 
-    class locations{
+include "../DB.php";
+
+    class Locations{
         
         //this will get called automatically if a Toppings object is made
         //just connects to the database to get it ready for the other functions

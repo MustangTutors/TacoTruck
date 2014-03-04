@@ -6,6 +6,9 @@
     getUserByEmailAndPassword(email,password)
     addUser(firstName,lastName,creditProvider,creditCardNumber,email,password)
 */
+
+include "../DB.php";
+
     class User{
         public $user_id;
         public $fName;
@@ -36,15 +39,16 @@
         //this echos a json object with the users info based on the users email and password
         public function getUserByEmailAndPassword($email, $pwd) {
             $attributes = $this->db->query("SELECT * FROM users WHERE email=? AND pswd=?", array($email, $pwd));
-            if(isset($attributes[0])){
-                $this->_set($attributes[0]);
+            //if(isset($attributes[0])){
+              // $this->_set($attributes);
                 echo (json_encode($attributes));
-            }
+            //}
             return FALSE;
         }
     
         //this sets all the User objects variables so that you can use them later if need be
         public function _set($dictionary) {
+            $this->user_id = $dictionary['user_id'];
             $this->fName = $dictionary['fName'];
             $this->lName = $dictionary['lName'];
             $this->credit_provider = $dictionary['credit_provider'];
@@ -57,9 +61,9 @@
         //notice this is a static function so this can get called without having to instantiate a new user object
         public static function addUser($fName,$lName,$creditProvider,$creditCardNum,$email,$password){
             $query = "INSERT INTO users (fName,lName,credit_provider,credit_number,email,pswd)VALUES (?,?,?,?,?,?)";
-            $user_id = $this->db->insert($query, array($fName,$lName,$credit_provider,$credit_number,$email,$pswd)
-        }
+            $user_id = $this->db->insert($query, array($fName,$lName,$credit_provider,$credit_number,$email,$pswd));
+            }
     
 
-
+}
 ?>

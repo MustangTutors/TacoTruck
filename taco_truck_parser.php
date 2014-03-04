@@ -75,7 +75,7 @@
                 $results = $dbInstance->insert($query, array($row[0],$row[1],date('Y-m-d h:i:s', strtotime($row[2]))));
             }
     }
-    
+
     //load Tacos table
         $row = 0;
     $csv_data = array();
@@ -93,13 +93,13 @@
     }
     foreach($csv_data as $row){
             if($row[0]!="OrderItemId"){
-                echo($row[1]);
-                echo($row[2]);
-                $query = "INSERT INTO tacos (taco_id,quantity,order_id)VALUES (?,?,?)";
-                $results = $dbInstance->insert($query, array($row[0],$row[2],$row[1]));
+                //echo($row[1]);
+                //echo($row[2]);
+                //$query = "INSERT INTO tacos (taco_id,quantity,order_id)VALUES (?,?,?)";
+                //$results = $dbInstance->insert($query, array($row[0],$row[2],$row[1]));
             }
     }
-    
+   
     //load TacoToppings table
         $row = 0;
     $csv_data = array();
