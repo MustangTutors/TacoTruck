@@ -205,22 +205,22 @@ $(document).ready(function(){
         // Tortilla object, push onto array
         var topping = new Object();
         topping.name = $("#tortillaSelection .pictureBox[class~='selected'] span").html();
-        topping.id = jQuery.data($("#tortillaSelection .pictureBox[class~='selected'] span")[0], 'id');
+        topping.topping_id = jQuery.data($("#tortillaSelection .pictureBox[class~='selected'] span")[0], 'id');
         topping.url = $("#tortillaSelection .pictureBox[class~='selected'] img").attr('src');
         toppings.push(topping);
 
         // Filling object, push onto array
         topping = new Object();
         topping.name = $("#fillingSelection .pictureBox[class~='selected'] span").html();
-        topping.id = jQuery.data($("#fillingSelection .pictureBox[class~='selected'] span")[0], 'id');
+        topping.topping_id = jQuery.data($("#fillingSelection .pictureBox[class~='selected'] span")[0], 'id');
         topping.url = $("#fillingSelection .pictureBox[class~='selected'] img").attr('src');
         toppings.push(topping);
 
         // Rice object, push onto array
         topping = new Object();
-        topping.id = $("#riceSelection .dropdown").val();
+        topping.topping_id = $("#riceSelection .dropdown").val();
         // If rice is not none, proceed
-        if(topping.id !== "none"){
+        if(topping.topping_id !== "none"){
             topping.name = $("#riceSelection .dropdown option[value='" + topping.id + "']").html();
             topping.url = $("#riceSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
@@ -228,9 +228,9 @@ $(document).ready(function(){
 
         // Beans object, push onto array
         topping = new Object();
-        topping.id = $("#beanSelection .dropdown").val();
+        topping.topping_id = $("#beanSelection .dropdown").val();
         // If beans is not none, proceed
-        if(topping.id !== "none"){
+        if(topping.topping_id !== "none"){
             topping.name = $("#beanSelection .dropdown option[value='" + topping.id + "']").html();
             topping.url = $("#beanSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
@@ -238,9 +238,9 @@ $(document).ready(function(){
 
         // Cheese object, push onto array
         topping = new Object();
-        topping.id = $("#cheeseSelection .dropdown").val();
+        topping.topping_id = $("#cheeseSelection .dropdown").val();
         // If beans is not none, proceed
-        if(topping.id !== "none"){
+        if(topping.topping_id !== "none"){
             topping.name = $("#cheeseSelection .dropdown option[value='" + topping.id + "']").html();
             topping.url = $("#cheeseSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
@@ -248,9 +248,9 @@ $(document).ready(function(){
 
         // Sauce object, push onto array
         topping = new Object();
-        topping.id = $("#sauceSelection .dropdown").val();
+        topping.topping_id = $("#sauceSelection .dropdown").val();
         // If sauce is not none, proceed
-        if(topping.id !== "none"){
+        if(topping.topping_id !== "none"){
             topping.name = $("#sauceSelection .dropdown option[value='" + topping.id + "']").html();
             topping.url = $("#sauceSelection img.toppingPic").attr('src'); 
             toppings.push(topping);
@@ -262,7 +262,7 @@ $(document).ready(function(){
             // Each vegetable object, push onto array
             topping = new Object();
             topping.name = veggies.eq(i).children("label").html();
-            topping.id = veggies.eq(i).children("input").val();
+            topping.topping_id = veggies.eq(i).children("input").val();
             topping.url = "img/vegetable.png";
             toppings.push(topping);
         }
@@ -273,7 +273,7 @@ $(document).ready(function(){
             // Each extra object, push onto array
             topping = new Object();
             topping.name = extras.eq(i).children("label").html();
-            topping.id = extras.eq(i).children("input").val();
+            topping.topping_id = extras.eq(i).children("input").val();
             topping.url = "img/extra.png";
             toppings.push(topping);
         }
