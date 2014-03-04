@@ -1,5 +1,26 @@
 @import url(http://fonts.googleapis.com/css?family=Amethysta);
 
+#welcomeMessage {
+    display: none;
+    margin-right: 35px;
+    margin-top: -10px;
+}
+
+#welcomeMessage input[value="Logout"] {
+    float: right;
+}
+
+#loginForm {
+    display: block;
+    margin-right: 25px;
+}
+
+.welcome {
+    color: #EAD5AA;
+    font-size: 2.3em;
+    text-shadow: 3px 3px rgba(82,73,40,0.5);
+}
+
 nav {
     clear: both;
     height: 50px;
