@@ -14,7 +14,7 @@ class phpapi
         $this->con = mysqli_connect("localhost", "taco", "taco");
         if(!$this->con)
             die('Could not connect: ' . mysqli_error());
-        mysqli_select_db($this->con, "TacoTruck")
+        mysqli_select_db($this->con, "tacotruck")
         or die("Unable to select database: " . mysqli_error());
     }
 
@@ -115,11 +115,11 @@ class phpapi
     public function verifyUser($email,$password)
     {
         // Retrieve list of matching $email/$passwords 
-        $query = "SELECT user_id FROM users WHERE email='$email' AND pswd='$password";
+        $query = "SELECT user_id FROM users WHERE email='" + $email + "' AND pswd='" + $password + "'";
         $result = mysqli_query($this->con,$query);
-	$id=mysqli_fetch_row($result);
-	if($id==NULL) return -1;
-	return $id[0];
+        $id=mysqli_fetch_row($result);
+        if($id==NULL) return -1;
+        return $id[0];
     }
 }
 
