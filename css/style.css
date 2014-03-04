@@ -384,6 +384,7 @@ article#previousOrder {
     border-color: #524928;
     padding: 10px;
     background-color: #EAD5AA;
+    display: none;
 }
 
 .tacoItem {
