@@ -437,7 +437,8 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.vegetable.length; i++) {
                 // Create and append new node
-                var newOption = $("<div class='checking'><input type='checkbox' name='vegetables' id='vegetable"+i+"' value='" + json.vegetable[i].id + "' price='" + json.vegetable[i].price + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
+                var newOption = $("<div class='checking'><input type='checkbox' name='vegetables' id='vegetable"+i+"' value='" + 
+                                    json.vegetable[i].id + "' price='" + json.vegetable[i].price + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#vegetableSelection div.center');
 
                 // Add information from JSON
@@ -452,7 +453,8 @@ $(document).ready(function(){
         success: function(json) {
             for(var i = 0; i < json.extra.length; i++) {
                 // Create and append new node
-                var newOption = $("<div class='checking'><input type='checkbox' name='extras' id='extra"+i+"' value='" + json.extra[i].id + "' price='" + json.extra[i].price + "'><label for='extra"+i+"' class='smallFont'></label></div>");
+                var newOption = $("<div class='checking'><input type='checkbox' name='extras' id='extra"+i+"' value='" + 
+                                    json.extra[i].id + "' price='" + json.extra[i].price + "'><label for='extra"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#extraSelection div.center');
 
                 // Add information from JSON
