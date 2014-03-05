@@ -100,7 +100,7 @@ $(document).ready(function(){
 		// If not selected, select all
 		if($("#selectAllVegetables").html() === "Select All"){
 			$("#vegetableSelection input[type='checkbox']").prop('checked', true);
-			$("#selectAllVegetables").html("Deselect All");
+			$("#selectAllVegetables").html("Clear All");
 		}
 		// If selected, deselect all
 		else {
@@ -116,6 +116,11 @@ $(document).ready(function(){
     $(document).on('click', "#vegetableSelection input[type='checkbox']", function(event){
         // Update price
         updateTacoPrice();
+
+        // If selecting, change Select All button to Clear All
+        if($(this).prop('checked') === true) {
+            $("#selectAllVegetables").html("Clear All");
+        }
     });
 
 	// Select/deselect all extras
@@ -123,7 +128,7 @@ $(document).ready(function(){
 		// If not selected, select all
 		if($("#selectAllExtras").html() === "Select All"){
 			$("#extraSelection input[type='checkbox']").prop('checked', true);
-			$("#selectAllExtras").html("Deselect All");
+			$("#selectAllExtras").html("Clear All");
 		}
 		// If selected, deselect all
 		else {
@@ -139,6 +144,11 @@ $(document).ready(function(){
     $(document).on('click', "#extraSelection input[type='checkbox']", function(event){
         // Update price
         updateTacoPrice();
+
+        // If selecting, change Select All button to Clear All
+        if($(this).prop('checked') === true) {
+            $("#selectAllExtras").html("Clear All");
+        }
     });
 
     // Change quantity (price)
