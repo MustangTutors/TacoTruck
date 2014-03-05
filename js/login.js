@@ -33,6 +33,8 @@ $(document).ready(function() {
 		        // $("#payment_last").val(data.last_name);
 		        // $("#payment_provider select>option[value='" + data.provider + "']").prop('selected',true);
 		        // $("#payment_number").val(data.number);
+		        $("#payment_first").val("John");
+		        $("#payment_last").val("Smith");
 
 		        // Clear previous order
 		        $("#previousOrder .taco").remove();
@@ -123,9 +125,15 @@ $(document).ready(function() {
 		        $("nav a[href='registration.html']").attr('id', '');
 		        $("nav a[href='registration.html']").html("Register");
 
-		        // Previous Order
+		        // Hide Previous Order
 		        $("#previousOrder #useLastOrder").prop('checked', false);
 		        $("#previousOrder").hide();
+
+		        // Clear payment information
+		        $("#payment_first").val('');
+		        $("#payment_last").val('');
+		        $("#payment_provider select>option[value='Visa']").prop('selected',true);
+		        $("#payment_number").val('');
 
 		        updateTotalPrice();
 			}
