@@ -7,6 +7,9 @@ $(document).ready(function() {
 				data = JSON.parse(data);
 				login(data);
 			}
+            else {
+                $("#loginForm").show();
+            }
 		}
 	});
 
