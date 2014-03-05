@@ -231,14 +231,14 @@ article#mailing, article#phone {
    width: 190px;
 }
 
-input[type="text"], input[type="email"], input[type="password"], #registration_provider {
+input[type="text"], input[type="email"], input[type="password"], #registration_provider, #payment_provider {
     width: 200px;
     height: 20px;
     margin-bottom: 5px;
     margin-left: 10px;
 }
 
-#registration_provider {
+#registration_provider, #payment_provider {
     width: 206px;
 }
 
