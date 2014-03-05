@@ -609,3 +609,16 @@ function cancelOrder() {
     // Reset price
     updateTotalPrice();
 }
+
+// Create a JSON of all the tacos for the order
+function createOrderJSON() {
+    var tacos = $(".taco");
+    var numTacos = tacos.length;
+
+    var tacosJSON = new Array();
+    for (var i = 0; i < numTacos; i++) {
+        tacosJSON.push(jQuery.data($("#currentOrder .taco")[i], 'taco'));
+    }
+
+    return '{ "order": [' + tacosJSON.join(", ") + '] }';
+}
