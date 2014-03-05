@@ -7,6 +7,7 @@
     getToppingByToppingPrice(price)
     getToppingByToppingHeat(heat)
     getToppingByToppingType(type)
+    getAllToppings()
 */
 include "../DB.php";
 
@@ -75,13 +76,18 @@ include "../DB.php";
         //echos a json object holding topping's info from its type
         public function getToppingByToppingType($toppingType){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_type = ?",array($toppingType));
-            //if(isset($attributes[0])){
-            //    $this->_set($attributes[0]);
+            if(isset($attributes[0])){
+                $this->_set($attributes[0]);
                 echo (json_encode($attributes));
-            //}
+            }
             return FALSE;
         }
 
+        //echos a json object holding all the toppings
+        public function getAllToppings(){
+            $attributes = $this->db->query("SELECT * FROM toppings",array());
+            echo (json_encode($attributes));
+        }
 
 
 
