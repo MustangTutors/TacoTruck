@@ -357,7 +357,7 @@ CREATE TABLE `users` (
   `credit_provider` varchar(30) NOT NULL,
   `credit_number` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `pswd` varchar(20) NOT NULL,
+  `pswd` varchar(200) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
