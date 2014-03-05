@@ -3,7 +3,7 @@
 #welcomeMessage {
     display: none;
     margin-right: 35px;
-    margin-top: -10px;
+    margin-top: -1%;
 }
 
 #welcomeMessage input[value="Logout"] {
