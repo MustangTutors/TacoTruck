@@ -338,7 +338,7 @@ $(document).ready(function(){
         var tacoObject = new Object();
         tacoObject.quantity = quantity;
         tacoObject.toppings = toppings;
-        jQuery.data($("#currentOrder .taco:last")[0], 'taco', JSON.stringify(tacoObject));
+        jQuery.data($("#currentOrder .taco:last")[0], 'taco', tacoObject);
     });
 
     // Parse JSON for Tortilla
@@ -638,20 +638,19 @@ function cancelOrder() {
 
 // Create a JSON of all the tacos for the order
 function createOrderJSON() {
-    var tacoSelector;
-    if ($('#useLastOrder').is(":checked")) {
-        tacoSelector = ".taco";
-    }
-    else {
-        tacoSelector = "#currentOrder .taco";
+    var tacoSelector = ".taco";
+    if (!$('#useLastOrder').is(":checked")) {
+        tacoSelector = "#currentOrder " + tacoSelector;
     }
     var tacos = $(tacoSelector);
     var numTacos = tacos.length;
 
-    var tacosJSON = new Array();
+    var tacosJSON = new Object();
+    tacosJSON.order = new Array();
     for (var i = 0; i < numTacos; i++) {
-        tacosJSON.push(jQuery.data($(tacoSelector)[i], 'taco'));
+        tacosJSON.order.push(jQuery.data($(tacoSelector)[i], 'taco'));
+        tacosJSON.order[i].quantity = $(tacoSelector + " [name='quantity']").eq(i).val();
     }
 
-    return '{ "order": [' + tacosJSON.join(", ") + '] }';
+    return JSON.stringify(tacosJSON);
 }

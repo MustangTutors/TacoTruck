@@ -143,7 +143,7 @@ function login(data){
                 newPrice.insertBefore("#previousOrder .taco:last .indivTacoPrice span.tacoLabel");
 
                 // JSON object stuff
-                jQuery.data($("#previousOrder .taco:last")[0], 'taco', JSON.stringify(taco));
+                jQuery.data($("#previousOrder .taco:last")[0], 'taco', taco);
             }
         }
     });
