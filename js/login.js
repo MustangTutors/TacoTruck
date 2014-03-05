@@ -66,6 +66,7 @@ function login(data){
 	// Welcome Message
 	$("form#loginForm").hide();
     $("#welcomeMessage").show();
+    $("#welcomeMessage").css("display", "inline-block");
     $("#welcomeMessage span.welcome").html("Welcome, " + data.fName + " " + data.lName + "!");
 
     // Logout button

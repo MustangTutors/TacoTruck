@@ -3,7 +3,16 @@
 #welcomeMessage {
     display: none;
     margin-right: 35px;
-    margin-top: -1%;
+    margin-top: -3%;
+    width: 270px;
+    text-align: right;
+    position: relative;
+}
+
+#welcomeMessage #middleWelcome {
+    display: inline-block;
+    position: relative;
+    top: 50%;
 }
 
 #welcomeMessage input[value="Logout"] {
@@ -19,6 +28,10 @@
     color: #EAD5AA;
     font-size: 1.7em;
     text-shadow: 3px 3px rgba(82,73,40,0.5);
+    position: relative;
+    display: inline-block;
+    word-wrap: break-word;
+    top: -50%;
 }
 
 nav {
