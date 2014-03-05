@@ -26,8 +26,8 @@ function getToppingsByType($type){
 
 function validateUser(){
     $user = new User();
-    $email = $_REQUEST['email'];
-    $password = $_REQUEST['password'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
     session_start();
     //Note: May not be the correct way to do this
     if($user->getUserByEmailAndPassword($email,$password)) $_SESSION['user_id']=$user->$user_id;
@@ -71,11 +71,11 @@ function addOrder(){
     $iter_quant = 0;
     $toppings;
     $iter_top=0;
-    foreach($order_data['order'] as $taco){
-        $quantities[$iter_quant]=$taco['quantity'];
+    foreach($order_data->order as $taco){
+        $quantities[$iter_quant]=$taco->quantity;
         $iter_top=0;
-        foreach($taco['toppings'] as $topping_id){
-            $toppings[$iter_quant][$iter_top]=$topping_id['topping_id'];
+        foreach($taco->toppings as $topping_id){
+            $toppings[$iter_quant][$iter_top]=$topping_id->topping_id;
             $iter_top++;
         }
         $iter_quant++;
