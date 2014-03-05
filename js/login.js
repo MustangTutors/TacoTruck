@@ -1,17 +1,5 @@
 $(document).ready(function() {
-	$.ajax({
-		type: "GET",
-		url: "api/users/info",
-		success: function(data) {
-			if(data !== 'null'){
-				data = JSON.parse(data);
-				login(data);
-			}
-            else {
-                $("#loginForm").show();
-            }
-		}
-	});
+	loadUserData();
 
 	$(document).on('submit', "form#loginForm", function(event) {
 		event.preventDefault(); //Prevent page from refreshing
@@ -159,4 +147,20 @@ function login(data){
             }
         }
     });
+}
+
+function loadUserData() {
+	$.ajax({
+		type: "GET",
+		url: "api/users/info",
+		success: function(data) {
+			if(data !== 'null'){
+				data = JSON.parse(data);
+				login(data);
+			}
+            else {
+                $("#loginForm").show();
+            }
+		}
+	});
 }

@@ -207,6 +207,7 @@ $(document).ready(function(){
             }
         });
         cancelOrder();
+        loadUserData();
     });
 
 	// Cancel taco and clear all selections
