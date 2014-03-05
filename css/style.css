@@ -144,6 +144,15 @@ section#login {
     cursor: pointer;
 }
 
+.dark {
+    background: -webkit-gradient(linear, left top, left bottom, from(#BD5D5D), to(#7C1A19));
+    border-color: #490706;
+}
+
+.dark:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#7C1A19), to(#BD5D5D));
+}
+
 .small {
     font-size: .75em;
     margin: 2px;
