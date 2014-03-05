@@ -609,3 +609,23 @@ function cancelOrder() {
     // Reset price
     updateTotalPrice();
 }
+
+// Create a JSON of all the tacos for the order
+function createOrderJSON() {
+    var tacoSelector;
+    if ($('#useLastOrder').is(":checked")) {
+        tacoSelector = ".taco";
+    }
+    else {
+        tacoSelector = "#currentOrder .taco";
+    }
+    var tacos = $(tacoSelector);
+    var numTacos = tacos.length;
+
+    var tacosJSON = new Array();
+    for (var i = 0; i < numTacos; i++) {
+        tacosJSON.push(jQuery.data($(tacoSelector)[i], 'taco'));
+    }
+
+    return '{ "order": [' + tacosJSON.join(", ") + '] }';
+}
