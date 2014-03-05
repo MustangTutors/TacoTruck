@@ -13,11 +13,11 @@ function initialize(locations) {
 
 function codeAddresses(locations) {
   for (var i in locations) {
-    var name = locations[i].loc_name;
-    var address = locations[i].street;
+    var name = locations[i].name;
+    var address = locations[i].address;
     var city = locations[i].city;
     var state = locations[i].state;
-    var zipcode = locations[i].zip;
+    var zipcode = locations[i].zipcode;
     var combinedAddress = address + ", " + city + ", " + state;
     var info = "<h3>" + name + "</h3>" + "<p>" + combinedAddress + ", " + zipcode + "</p>";
     var zip = {'postalCode': zipcode};

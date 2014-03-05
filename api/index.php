@@ -20,7 +20,7 @@ $app->run();
 
 function getToppingsByType($type){
     $topp = new Toppings();
-    if($type=="filling" || $type=="fillings") $type="type";
+    //if($type=="filling" || $type=="fillings") $type="type";
     $topp->getToppingByToppingType($type);
 }
 

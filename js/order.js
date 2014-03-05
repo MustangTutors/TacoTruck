@@ -328,20 +328,21 @@ $(document).ready(function(){
         url: "api/toppings/tortillas",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.tortillas;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
                 var newDiv = $("<div class='pictureBox'><img src='' alt='tortilla'><br/><span></span></div>");
                 newDiv.insertBefore("#tortillaSelection div.holder");
 
                 // Add information from JSON
-                $("#tortillaSelection .pictureBox span").eq(i).html(json[i].topping_name);
-                var url = "img/tortilla/" + json[i].topping_id + ".png";
+                $("#tortillaSelection .pictureBox span").eq(i).html(json[i].name);
+                var url = "img/tortilla/" + json[i].id + ".png";
                 $("#tortillaSelection .pictureBox img").eq(i).attr('src', url);
                 $("#tortillaSelection .pictureBox img").eq(i).attr('alt', 'tortilla');
 
                 // Save id
-                jQuery.data($("#tortillaSelection .pictureBox span")[i], 'id', json[i].topping_id);
-                jQuery.data($("#tortillaSelection .pictureBox span")[i], 'price', json[i].topping_price);
+                jQuery.data($("#tortillaSelection .pictureBox span")[i], 'id', json[i].id);
+                jQuery.data($("#tortillaSelection .pictureBox span")[i], 'price', json[i].price);
             }
 
             // Add the class to the first option for tortilla 
@@ -354,20 +355,21 @@ $(document).ready(function(){
         url: "api/toppings/fillings",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.fillings;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
                 var newDiv = $("<div class='pictureBox'><img src='' alt='filling'><br/><span></span></div>");
                 newDiv.insertBefore("#fillingSelection div.holder");
 
                 // Add information from JSON
-                $("#fillingSelection .pictureBox span").eq(i).html(json[i].topping_name);
-                var url = "img/filling/" + json[i].topping_id + ".png";
+                $("#fillingSelection .pictureBox span").eq(i).html(json[i].name);
+                var url = "img/filling/" + json[i].id + ".png";
                 $("#fillingSelection .pictureBox img").eq(i).attr('src', url);
                 $("#fillingSelection .pictureBox img").eq(i).attr('alt', 'filling');
 
                 // Save id
-                jQuery.data($("#fillingSelection .pictureBox span")[i], 'id', json[i].topping_id);
-                jQuery.data($("#fillingSelection .pictureBox span")[i], 'price', json[i].topping_price);
+                jQuery.data($("#fillingSelection .pictureBox span")[i], 'id', json[i].id);
+                jQuery.data($("#fillingSelection .pictureBox span")[i], 'price', json[i].price);
             }
 
             // Add the class to the first option for filling 
@@ -380,13 +382,14 @@ $(document).ready(function(){
         url: "api/toppings/rice",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.rice;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json[i].topping_id+"' price='" + json[i].topping_price + "'></option>");
+                var newOption = $("<option value='"+json[i].id+"' price='" + json[i].price + "'></option>");
                 $("#riceSelection .dropdown").append(newOption);
 
                 // Add information from JSON
-                $("#riceSelection .dropdown option").eq(i+1).html(json[i].topping_name);
+                $("#riceSelection .dropdown option").eq(i+1).html(json[i].name);
             }
         }
     });
@@ -396,13 +399,14 @@ $(document).ready(function(){
         url: "api/toppings/beans",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.beans;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json[i].topping_id+"' price='" + json[i].topping_price + "'></option>");
+                var newOption = $("<option value='"+json[i].id+"' price='" + json[i].price + "'></option>");
                 $("#beanSelection .dropdown").append(newOption);
 
                 // Add information from JSON
-                $("#beanSelection .dropdown option").eq(i+1).html(json[i].topping_name);
+                $("#beanSelection .dropdown option").eq(i+1).html(json[i].name);
             }
         }
     });
@@ -412,13 +416,14 @@ $(document).ready(function(){
         url: "api/toppings/cheese",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.cheese;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json[i].topping_id+"' price='" + json[i].topping_price + "'></option>");
+                var newOption = $("<option value='"+json[i].id+"' price='" + json[i].price + "'></option>");
                 $("#cheeseSelection .dropdown").append(newOption);
 
                 // Add information from JSON
-                $("#cheeseSelection .dropdown option").eq(i+1).html(json[i].topping_name);
+                $("#cheeseSelection .dropdown option").eq(i+1).html(json[i].name);
             }
         }
     });
@@ -428,13 +433,14 @@ $(document).ready(function(){
         url: "api/toppings/sauces",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.sauces;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
-                var newOption = $("<option value='"+json[i].topping_id+"' price='" + json[i].topping_price + "'></option>");
+                var newOption = $("<option value='"+json[i].id+"' price='" + json[i].price + "'></option>");
                 $("#sauceSelection .dropdown").append(newOption);
 
                 // Add information from JSON
-                $("#sauceSelection .dropdown option").eq(i+1).html(json[i].topping_name + " (" + json[i].topping_heat + ")");
+                $("#sauceSelection .dropdown option").eq(i+1).html(json[i].name + " (" + json[i].heat + ")");
             }
         }
     });
@@ -444,14 +450,15 @@ $(document).ready(function(){
         url: "api/toppings/vegetables",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.vegetables;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
                 var newOption = $("<div class='checking'><input type='checkbox' name='vegetables' id='vegetable"+i+"' value='" + 
-                                    json[i].topping_id + "' price='" + json[i].topping_price + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
+                                    json[i].id + "' price='" + json[i].price + "'><label for='vegetable"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#vegetableSelection div.center');
 
                 // Add information from JSON
-                $("#vegetableSelection .checking label").eq(i).html(json[i].topping_name);
+                $("#vegetableSelection .checking label").eq(i).html(json[i].name);
             }
         }
     });
@@ -461,14 +468,15 @@ $(document).ready(function(){
         url: "api/toppings/extras",
         success: function(json) {
             json = JSON.parse(json);
+            json = json.extras;
             for(var i = 0; i < json.length; i++) {
                 // Create and append new node
                 var newOption = $("<div class='checking'><input type='checkbox' name='extras' id='extra"+i+"' value='" + 
-                                    json[i].topping_id + "' price='" + json[i].topping_price + "'><label for='extra"+i+"' class='smallFont'></label></div>");
+                                    json[i].id + "' price='" + json[i].price + "'><label for='extra"+i+"' class='smallFont'></label></div>");
                 newOption.insertBefore('#extraSelection div.center');
 
                 // Add information from JSON
-                $("#extraSelection .checking label").eq(i).html(json[i].topping_name);
+                $("#extraSelection .checking label").eq(i).html(json[i].name);
             }
         }
     });
