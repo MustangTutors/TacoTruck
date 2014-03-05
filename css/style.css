@@ -234,11 +234,6 @@ select[name="credit_provider"] {
    margin-top: 10px;
 }
 
-/*#register > input {
-    width: 100px;
-    font-size: .8em;
-}*/
-
 .heading {
     text-align: center;
     font-size: 2em;
@@ -388,7 +383,7 @@ article#previousOrder {
 }
 
 .tacoItem {
-    width: 47%;
+    width: 48.6%;
     display: inline-block;
     vertical-align: top;
     word-wrap: break-word;
