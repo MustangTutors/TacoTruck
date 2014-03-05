@@ -64,7 +64,7 @@ function addUser(){
  }
 
 function addOrder(){
-    $user_id = 1;
+    $user_id = $_SESSION['user_id'];
     $order = new Order();
     $order_data = json_decode($_POST['order']);
     $quantities;
