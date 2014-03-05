@@ -11,9 +11,7 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				data = JSON.parse(data);
-				// Add logic for if failed to login
-				// If not logged in correctly
-				if(data.user_id === null){
+				if (data.user_id === null) {
 					alert("Incorrect login information.");
 				}
 				else {
@@ -33,9 +31,9 @@ $(document).ready(function() {
 
 			        // Populate payment information
 			        $("#payment_first").val(data.fName);
-			        $("#payment_last").val(data.lName);
-			        $("#payment_provider select>option[value='" + data.credit_provider + "']").prop('selected',true);
-			        $("#payment_number").val(data.credit_number);
+					$("#payment_last").val(data.lName);
+					$("#payment_provider select>option[value='" + data.credit_provider + "']").prop('selected',true);
+					$("#payment_number").val(data.credit_number);
 
 			        // Clear previous order
 			        $("#previousOrder .taco").remove();
@@ -63,7 +61,7 @@ $(document).ready(function() {
 				                                '<span class="smallFont">' + taco.toppings[0].topping_name + '</span></div><hr>' +
 				                                '<div class="tacoQuantity"><span class="tacoLabel">Quantity:</span>'+
 				                                '<input type="number" value="' + Number(taco.quantity) + '" min="1" max="100" name="quantity"></div><div class="indivTacoPrice"><span class="tacoLabel">/ea</span></div></div>');
-				                
+
 				                newTaco.insertBefore("#previousOrder div.center");
 
 				                // Add topping title
