@@ -40,9 +40,13 @@ function logOut(){
 
 function getUserInfo(){
      $user=new User();
-     $user->getUserByID($_SESSION['user_id']);
-     echo '{"id":"'.$user->user_id.'","name":"'.$user->fName.' '.$user->lName.',"credit_provider":"'.$user->credit_provider.'","credit_number":"'.$user->credit_number.'"}';
-
+     if(!empty($_SESSION['user_id'])){
+        $user->getUserByID($_SESSION['user_id']);
+        echo '{"user_id":"'.$user->user_id.'","fName":"'.$user->fName.'","lName":"'.$user->lName.'","credit_provider":"'.$user->credit_provider.'","credit_number":"'.$user->credit_number.'"}';
+     }
+     else{
+        echo 'null';
+     }
 }
 
 function getLastOrder($userId){	
