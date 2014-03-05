@@ -295,10 +295,10 @@ LOCK TABLES `toppings` WRITE;
 
 INSERT INTO `toppings` (`topping_id`, `topping_name`, `topping_heat`, `topping_price`, `topping_type`)
 VALUES
-	(1,'Steak',NULL,1,'type'),
-	(2,'Chicken',NULL,0.75,'type'),
-	(3,'Carnitas',NULL,1,'type'),
-	(4,'Veggie',NULL,0.5,'type'),
+	(1,'Steak',NULL,1,'fillings'),
+	(2,'Chicken',NULL,0.75,'fillings'),
+	(3,'Carnitas',NULL,1,'fillings'),
+	(4,'Veggie',NULL,0.5,'fillings'),
 	(5,'Flour',NULL,0.25,'tortillas'),
 	(6,'Cayenne',NULL,0.35,'tortillas'),
 	(7,'Wheat',NULL,0.35,'tortillas'),
@@ -317,7 +317,6 @@ VALUES
 	(20,'Bad Ass BBQ',2,0,'sauces'),
 	(21,'Mild Tomatillo',2,0,'sauces'),
 	(22,'Ranch',1,0,'sauces'),
-	(23,'No Sauce',0,0,'sauces'),
 	(24,'Habenero',3,0,'sauces'),
 	(25,'Salsa',2,0,'sauces'),
 	(26,'Ancho',1,0,'sauces'),
@@ -367,16 +366,16 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`user_id`, `fName`, `lName`, `credit_provider`, `credit_number`, `email`, `pswd`)
 VALUES
-	(1,'Bobby','Dickerson','Visa','4581172250956295','BobbyDDickerson@armyspy.com','oom1duH0quei'),
-	(2,'John','Horan','Visa','4833554465137429','JohnMHoran@cuvox.de','uM0zohG5'),
-	(3,'Lula','Benjamin','Visa','4173199486453080','LulaTBenjamin@einrot.com','ohF0zooquu1'),
-	(4,'Franklin','Hills','Visa','4937182773835950','FranklinIHills@rhyta.com','eeWahXo5ee'),
-	(5,'Samuel','Blevins','American Express','379823789416348','SamuelCBlevins@cuvox.de','TaeXo2OoV8u'),
-	(6,'William','Raymond','American Express','345650978113056','WilliamRRaymond@cuvox.de','Jiech8aiCh'),
-	(7,'Janice','Robertson','American Express','375651072455574','JaniceRRobertson@superrito.com','kohgae4OeGh'),
-	(8,'Lashawn','Lambert','American Express','342691124360073','LashawnTLambert@einrot.com','Lu0icho2yee'),
-	(9,'Vanessa','Seals','Mastercard','5513462587501850','VanessaGSeals@dayrep.com','tooWee3Mo6ae'),
-	(10,'Bethany','Tong','Mastercard','5345523630534291','BethanyETong@dayrep.com','ahC7Veigha');
+	(1,'Bobby','Dickerson','Visa','4581172250956295','BobbyDDickerson@armyspy.com','4b6b9727b20011bc165e590ec85638c1'),
+	(2,'John','Horan','Visa','4833554465137429','JohnMHoran@cuvox.de','b8f0ad0729b10a7cf8957fe46fb8c38e'),
+	(3,'Lula','Benjamin','Visa','4173199486453080','LulaTBenjamin@einrot.com','52cae3a579c08ba76c9fe4cad1e23049'),
+	(4,'Franklin','Hills','Visa','4937182773835950','FranklinIHills@rhyta.com','ca575dfaf90d61f75396abb715d15ecc'),
+	(5,'Samuel','Blevins','American Express','379823789416348','SamuelCBlevins@cuvox.de','b427b77b6f8be197e11a7d1969c84914'),
+	(6,'William','Raymond','American Express','345650978113056','WilliamRRaymond@cuvox.de','79dfa378d243c94d6797b97dfb88b07c'),
+	(7,'Janice','Robertson','American Express','375651072455574','JaniceRRobertson@superrito.com','45b0c55d543e68f1a66c6c9ff16e7cc9'),
+	(8,'Lashawn','Lambert','American Express','342691124360073','LashawnTLambert@einrot.com','0191577f184d36f192c3c3ff0ae2fac9'),
+	(9,'Vanessa','Seals','Mastercard','5513462587501850','VanessaGSeals@dayrep.com','4806b7b651b1072bb634c61efe9ffa70'),
+	(10,'Bethany','Tong','Mastercard','5345523630534291','BethanyETong@dayrep.com','7b033a6717b839386cb1b49b1c1adf0f');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
