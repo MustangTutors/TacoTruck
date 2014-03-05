@@ -86,7 +86,7 @@ $(document).ready(function(){
             $("#sauceSelection img").css('visibility', 'hidden');
         }
         else {
-            url = "img/sauce/" + id + ".png";
+            url = "img/sauces/" + id + ".png";
             $("#sauceSelection img").css('visibility', 'visible');
         }
         $("#sauceSelection img").attr('src', url);
