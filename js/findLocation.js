@@ -22,16 +22,17 @@ function codeAddresses(locations) {
     var info = "<h3>" + name + "</h3>" + "<p>" + combinedAddress + ", " + zipcode + "</p>";
     var zip = {'postalCode': zipcode};
     var options = { 'address': combinedAddress, componentRestrictions: zip };
-    geocoder.geocode( options, geocodeCallback(info) );
+    geocoder.geocode( options, geocodeCallback(combinedAddress, info) );
   }
 }
 
-function geocodeCallback(info) {
+function geocodeCallback(address, info) {
   return function (results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         var marker = new google.maps.Marker({
             map: map,
-            position: results[0].geometry.location
+            position: results[0].geometry.location,
+            title: address
         });
         
         google.maps.event.addListener(marker, 'click', function() {
