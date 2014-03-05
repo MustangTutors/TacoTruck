@@ -68,22 +68,24 @@ function addUser(){
 
 function addOrder(){
     $user_id = $_SESSION['user_id'];
-    $order = new Order();
-    $order_data = json_decode($_POST['order']);
-    $quantities;
-    $iter_quant = 0;
-    $toppings;
-    $iter_top=0;
-    foreach($order_data->order as $taco){
-        $quantities[$iter_quant]=$taco->quantity;
+    if (!empty($user_id)) {
+        $order = new Order();
+        $order_data = json_decode($_POST['order']);
+        $quantities;
+        $iter_quant = 0;
+        $toppings;
         $iter_top=0;
-        foreach($taco->toppings as $topping_id){
-            $toppings[$iter_quant][$iter_top]=$topping_id->topping_id;
-            $iter_top++;
+        foreach($order_data->order as $taco){
+            $quantities[$iter_quant]=$taco->quantity;
+            $iter_top=0;
+            foreach($taco->toppings as $topping_id){
+                $toppings[$iter_quant][$iter_top]=$topping_id->topping_id;
+                $iter_top++;
+            }
+            $iter_quant++;
         }
-        $iter_quant++;
+        $order->addOrder($user_id,$quantities,$toppings); 
     }
-    $order->addOrder($user_id,$quantities,$toppings);    
 }
 
 function getAllToppings(){

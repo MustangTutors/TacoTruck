@@ -18,7 +18,17 @@ $(document).ready(function(){
                         $(".error").html("Error: That email already exists.<br/><br/>");
                     }
                     else {
-                        window.location.replace("index.html");
+                        $.ajax({
+                            type: "POST",
+                            url: "api/users/login",
+                            data: {
+                                email: $("#registration input[name='email']").val(),
+                                password: $("#registration input[name='password']").val()
+                            },
+                            success: function(data) {
+                                window.location.replace("index.html");
+                            }
+                        });
                     }
                 }
             });

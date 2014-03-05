@@ -196,10 +196,17 @@ $(document).ready(function(){
     // When submit on open payment window
     $(document).on('submit', '#paymentForm', function(event){
         event.preventDefault();
-        cancelOrder();
         $("#payment").show();
         $("#paymentForm").hide();
         $("#proceedToLocation").show();
+        $.ajax({
+            type: "POST",
+            url: "api/orders/addOrder",
+            data: {
+                order: createOrderJSON()
+            }
+        });
+        cancelOrder();
     });
 
 	// Cancel taco and clear all selections

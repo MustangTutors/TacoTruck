@@ -32,7 +32,7 @@ include_once "../DB.php";
         }
         //echos a json object holding the last order based on the User ID
         public function getLastOrderByUserId($userID){
-            $query = "SELECT taco_id, quantity, topping_id, topping_type, topping_name, topping_price FROM(SELECT orders.user_id, orders.order_id, MAX(order_dates) as MostRecent_order_date FROM orders WHERE user_id =? )as t1 NATURAL JOIN tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings";
+            $query = "SELECT taco_id, quantity, topping_id, topping_type, topping_name, topping_price FROM(SELECT orders.user_id, orders.order_id, MAX(order_dates) as MostRecent_order_date FROM orders WHERE user_id =? )as t1 NATURAL JOIN tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings ORDER BY taco_id, topping_id";
             $attributes = $this->db->query($query,array($userID));
             if(isset($attributes[0])){
 		$i=array("previousOrder"=>array());
