@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include "../init.php";
 include "../library/Order.php";
 include "../library/User.php";
@@ -28,14 +29,12 @@ function validateUser(){
     $user = new User();
     $email = $_POST['email'];
     $password = $_POST['password'];
-    session_start();
     //Note: May not be the correct way to do this
-    if($user->getUserByEmailAndPassword($email,$password)) $_SESSION['user_id']=$user->$user_id;
+    if($user->getUserByEmailAndPassword($email,$password)) $_SESSION['user_id']=$user->user_id;
     echo json_encode($user);
 }
 
 function logOut(){
-	session_start();
 	session_destroy();
 }
 
