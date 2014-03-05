@@ -1,5 +1,6 @@
 <?php 
 include "../init.php";
+include "../library/Order.php";
 
 require 'Slim/Slim.php';
     
@@ -16,6 +17,7 @@ $app->run();
 
 function getToppingsByType($type){
     $topp = new Toppings();
+    if($type=="filling" || $type=="fillings") $type="type";
     $topp->getToppingByToppingType($type);
 }
 
@@ -27,9 +29,10 @@ function validateUser(){
     echo json_encode($user);
 }
 
-function getLastOrder($userId){
-    $order = new Order();
-    $order->getLastOrderByUserId($userId);
+function getLastOrder($userId){	
+	
+   $order = new Order();
+   $order->getLastOrderByUserId($userId);
 }
 function getLocations(){
     $location = new Locations();

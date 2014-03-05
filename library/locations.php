@@ -5,7 +5,7 @@
     getLocations()
 */
 
-include "../DB.php";
+include_once "../DB.php";
 
     class Locations{
         
@@ -17,7 +17,7 @@ include "../DB.php";
         
         //echos a json object holding all of the locations and their info
         public function getLocations(){
-            $query = "SELECT * FROM locations";
+            $query = "SELECT loc_name as name, street as address,city, state, zip as zipcode  FROM locations";
             $attributes = $this->db->query($query,array());
             echo (json_encode($attributes));
         }

@@ -9,7 +9,7 @@
     getToppingByToppingType(type)
     getAllToppings()
 */
-include "../DB.php";
+include_once "../DB.php";
 
     class Toppings{
         public $topping_id;
@@ -47,7 +47,7 @@ include "../DB.php";
         public function getToppingByToppingName($toppingName){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_name = ?",array($toppingName));
             if(isset($attributes[0])){
-                $this->_set($attributes[0]);
+                $this->_set($attributes[0]);		
                 echo (json_encode($attributes));
 
             }
@@ -78,15 +78,32 @@ include "../DB.php";
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_type = ?",array($toppingType));
             if(isset($attributes[0])){
                 $this->_set($attributes[0]);
-                echo (json_encode($attributes));
+		$i=array($toppingType=>array());
+		foreach($attributes as $result){			
+			$tacoJson=array();
+			$tacoJson["id"]=$result['topping_id'];
+			$tacoJson["name"]=$result['topping_name'];		
+			if($toppingType == "sauces") $tacoJson["heat"]=$result['topping_heat'];
+			$tacoJson["price"]=$result['topping_price'];
+			array_push($i[$toppingType],$tacoJson);
+		}
+                echo (json_encode($i));
             }
             return FALSE;
         }
 
         //echos a json object holding all the toppings
         public function getAllToppings(){
-            $attributes = $this->db->query("SELECT * FROM toppings",array());
-            echo (json_encode($attributes));
+	echo "{ \"toppings\":[";     
+	$this->getToppingByToppingType("type");
+	$this->getToppingByToppingType("tortillas"); 
+	$this->getToppingByToppingType("rice");
+	$this->getToppingByToppingType("cheese");
+	$this->getToppingByToppingType("beans");
+	$this->getToppingByToppingType("sauces");
+	$this->getToppingByToppingType("vegetables");
+	$this->getToppingByToppingType("extras");
+	echo"]}";
         }
 
 

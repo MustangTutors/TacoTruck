@@ -7,7 +7,7 @@
     addOrder(user_id,quantities,corresponding topping_ids)
 */
 
-include "../DB.php";
+include_once "../DB.php";
 
     class Order{
         public $order_id;
@@ -32,11 +32,28 @@ include "../DB.php";
         }
         //echos a json object holding the last order based on the User ID
         public function getLastOrderByUserId($userID){
-            $query = "SELECT t1.order_id,taco_id,quantity,topping_type,topping_name,topping_heat,topping_price FROM(SELECT orders.user_id, orders.order_id, MAX(order_dates) as MostRecent_order_date FROM orders WHERE user_id =? )as t1 NATURAL JOIN tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings";
+            $query = "SELECT taco_id,quantity,topping_id FROM(SELECT orders.user_id, orders.order_id, MAX(order_dates) as MostRecent_order_date FROM orders WHERE user_id =? )as t1 NATURAL JOIN tacos NATURAL JOIN tacoToppings NATURAL JOIN toppings";
             $attributes = $this->db->query($query,array($userID));
             if(isset($attributes[0])){
-                $this->_set($attributes[0]);
-                echo (json_encode($attributes));
+		$i=array("previousOrder"=>array());
+		$tacoNum=$attributes[0]["taco_id"];
+		$tacoJson=array();
+		$tacoJson["quantity"]=$attributes[0]['quantity'];
+		$tacoJson["toppings"]=array();
+		for($x=0;$x<count($attributes);$x++){			
+			if($attributes[$x]["taco_id"]!=$tacoNum){
+				array_push($i["order"],$tacoJson);
+				unset($tacoJson);
+				$tacoNum=$attributes[$x]["taco_id"];
+				$tacoJson=array();				
+				$tacoJson["quantity"]=$attributes[$x]['quantity'];
+				$tacoJson["toppings"]=array();
+			}			
+		array_push($tacoJson["toppings"],$attributes[$x]["topping_id"]);
+		}
+
+		array_push($i["previousOrder"],$tacoJson);
+              echo json_encode($i);
             }
             return FALSE;
         }
