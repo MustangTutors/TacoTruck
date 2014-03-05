@@ -49,7 +49,12 @@ include_once "../DB.php";
 				$tacoJson["quantity"]=$attributes[$x]['quantity'];
 				$tacoJson["toppings"]=array();
 			}			
-		array_push($tacoJson["toppings"], $attributes[$x]["topping_id"]);
+            $topping = array();
+            $topping['topping_id'] = $attributes[$x]["topping_id"];
+            $topping['topping_type'] = $attributes[$x]["topping_type"];
+            $topping['topping_name'] = $attributes[$x]["topping_name"];
+            $topping['topping_price'] = $attributes[$x]["topping_price"];
+		    array_push($tacoJson["toppings"], $topping);
 		}
 
 		array_push($i["previousOrder"],$tacoJson);
