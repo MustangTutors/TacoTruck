@@ -218,14 +218,14 @@ article#mailing, article#phone {
    width: 190px;
 }
 
-input[type="text"], input[type="email"], input[type="password"], select[name="credit_provider"] {
+input[type="text"], input[type="email"], input[type="password"], #registration_provider {
     width: 200px;
     height: 20px;
     margin-bottom: 5px;
     margin-left: 10px;
 }
 
-select[name="credit_provider"] {
+#registration_provider {
     width: 206px;
 }
 

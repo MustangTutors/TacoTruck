@@ -11,14 +11,14 @@ $(document).ready(function(){
 		else {
             $.ajax({
                 type: "POST",
-                url: "phpdoc/addUser.php",
+                url: "api/AddNewUser",
                 data: $(this).serialize(),
                 success: function(output) {
-                    if (output === "1") {
-                        window.location.replace("index.html");
+                    if (output === "null") {
+                        $(".error").html("Error: That email already exists.<br/><br/>");
                     }
                     else {
-                        $(".error").html("Error: That email already exists.<br/><br/>");
+                        window.location.replace("index.html");
                     }
                 }
             });

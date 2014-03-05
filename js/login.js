@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 		$.ajax({
 			type: "GET",
-			url: "api/toppings/sauces",
+			url: "api/",
 			data: {
 				email: $("input[name='email']").val(),
 				password: $("input[name='password']").val()

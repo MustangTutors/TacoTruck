@@ -22,11 +22,11 @@
                 <span class="error"></span>
                 <div>
                     <label for="first_name">First Name: *</label>
-                    <input type="text" name="first_name" id="registration_first" placeholder="Enter First Name" required>
+                    <input type="text" name="fName" id="registration_first" placeholder="Enter First Name" required>
                 </div>
                 <div>
                     <label for="last_name">Last Name: *</label>
-                    <input type="text" name="last_name" id="registration_last" placeholder="Enter Last Name" required>
+                    <input type="text" name="lName" id="registration_last" placeholder="Enter Last Name" required>
                 </div>
                 <div>
                     <label for="email">Email: *</label>
@@ -42,7 +42,7 @@
                 </div>
                 <div>
                     <label for="credit_provider">Credit Card Provider: *</label>
-                    <select name="credit_provider" id="registration_provider">
+                    <select name="creditProvider" id="registration_provider">
                         <option value="Visa">Visa</option>
                         <option value="Mastercard">Mastercard</option>
                         <option value="American Express">American Express</option>
@@ -50,7 +50,7 @@
                 </div>
                 <div>
                     <label for="credit_number">Credit Card Number: *</label>
-                    <input type="text" name="credit_number" id="registration_number" placeholder="Enter Credit Card Number" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" title="Must be valid, 16 digit credit card number. Ex: 1234567812345678" required>
+                    <input type="text" name="creditCardNum" id="registration_number" placeholder="Enter Credit Card Number" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" title="Must be valid, 16 digit credit card number. Ex: 1234567812345678" required>
                 </div>
                 <div  id="register">
                     <input type="submit" value="Register!" class="button">
