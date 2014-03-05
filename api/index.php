@@ -1,6 +1,7 @@
 <?php 
 include "../init.php";
 include "../library/Order.php";
+include "../library/User.php";
 
 require 'Slim/Slim.php';
     
@@ -8,7 +9,9 @@ $app = new Slim();
 
 $app->get('/toppings/','getAllToppings');
 $app->get('/toppings/:type','getToppingsByType');   
-$app->post('/users/login','validateUser');          
+$app->post('/users/login','validateUser');
+$app->post('/users/logout','logOut');   
+$app->get('/users/info','getUserInfo');       
 $app->get('/users/lastOrder/:userId','getLastOrder');   
 $app->get('/locations','getLocations');             
 $app->post('/orders/addOrder','addOrder' );         
@@ -25,8 +28,22 @@ function validateUser(){
     $user = new User();
     $email = $_REQUEST['email'];
     $password = $_REQUEST['password'];
-    $user->getUserByEmailAndPassword($email,$password);
+    session_start();
+    //Note: May not be the correct way to do this
+    if($user->getUserByEmailAndPassword($email,$password)) $_SESSION['user_id']=$user->$user_id;
     echo json_encode($user);
+}
+
+function logOut(){
+	session_start();
+	session_destroy();
+}
+
+function getUserInfo(){
+     $user=new User();
+     $user->getUserByID($_SESSION['user_id']);
+     echo '{"id":"'.$user->user_id.'","name":"'.$user->fName.' '.$user->lName.',"credit_provider":"'.$user->credit_provider.'","credit_number":"'.$user->credit_number.'"}';
+
 }
 
 function getLastOrder($userId){	

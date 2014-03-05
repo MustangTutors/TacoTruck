@@ -8,7 +8,7 @@
     updatePassword($newPassword)
 */
 
-include "../DB.php";
+include_once "../DB.php";
 
 
 //the salt I used when hashing the passwords
@@ -37,7 +37,8 @@ define('USER_SALT', 'balloon coyote$1');
         public function getUserById($id) {
             $attributes = $this->db->query("SELECT * FROM users WHERE user_id=?", array($id));
             if(isset($attributes[0])){
-                $this->_set($attributes[0]);
+                $this->_set($attributes[0]);		
+                return TRUE;
             }
             return FALSE;
         }
@@ -47,6 +48,7 @@ define('USER_SALT', 'balloon coyote$1');
             $attributes = $this->db->query("SELECT * FROM users WHERE email=? AND pswd=?", array($email, User::securePassword($pwd)));
             if(isset($attributes[0])){
                $this->_set($attributes[0]);
+	       return TRUE;
             }
             return FALSE;
         }
