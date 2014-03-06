@@ -7,6 +7,14 @@
         private $password;
         private $database;
         private $conn;
+
+	/**
+	* Creates a DB object that holds all the information required to connect to the database.
+	* @param STRING $host Hostname or ip address of the server.
+	* @param STRING $usrname Username used to log into MySQL.
+	* @param STRING $pswd Passsword used to log into MySQL.
+	* @param STRING $db_name name of the database to use for MySQL queries.
+	*/
         public function __construct($host,$usrname,$pswd,$db_name){
             $dsn = "mysql:host=$host;dbname=$db_name";
             try{
@@ -25,7 +33,11 @@
 
         }
         
-        //this function is for altering the tables
+        /**
+	* this function is for altering the tables
+	* @param STRING $query The query that will be used to retrieve info from the database.
+	* @param ARRAY $params The parameters from the calling function to be inserted into the placeholder variables in $query
+	*/
         public function execute($query,$params=array()){
             try{
                 $statement = $this->conn->prepare($query);
@@ -34,9 +46,13 @@
                 throw new Exception($e->getMessage());
             }           
         }
-        
-        //this is for inserting into the tables
-        //it returns the id of the last inserted object
+
+        /**        
+        * this is for inserting into the tables
+	* @param STRING $query The query that will be used to retrieve info from the database.
+	* @param ARRAY $params The parameters from the calling function to be inserted into the placeholder variables in $query
+	* @return INT ID of the last inserted object
+	*/
         public function insert($query,$params=array()){
             try{
                 $statement = $this->conn->prepare($query);
@@ -48,8 +64,12 @@
             
         }
         
-        //this is for querying from the tables
-        //it returns an array of the query results
+        /**
+	* this function is for querying from the tables
+	* @param STRING $query The query that will be used to retrieve info from the database.
+	* @param ARRAY $params The parameters from the calling function to be inserted into the placeholder variables in $query
+	* @return ARRAY The results of the query
+	*/
         public function query($query,$params=array()){
             try{
                 $statement = $this->conn->prepare($query);

@@ -9,13 +9,17 @@ include_once "../DB.php";
 
     class Locations{
         
-        //this will get called automatically if a Toppings object is made
-        //just connects to the database to get it ready for the other functions
+        /**
+	*this will get called automatically if a Toppings object is made
+        *just connects to the database to get it ready for the other functions
+	*/
         function __construct(){
             $this->db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
         }
         
-        //echos a json object holding all of the locations and their info
+        /**
+	* echos a json object holding all of the locations and their info
+	*/
         public function getLocations(){
             $query = "SELECT loc_name as name, street as address,city, state, zip as zipcode  FROM locations";
             $attributes = $this->db->query($query,array());

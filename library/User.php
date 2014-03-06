@@ -24,8 +24,10 @@ define('USER_SALT', 'balloon coyote$1');
         public $pswd;
         private $db = FALSE;
         
-        //this will get called automatically if a User object is made
-        //just connects to the database to get it ready for the other functions
+	/**
+        * this will get called automatically if a User object is made
+        * just connects to the database to get it ready for the other functions
+	*/
         function __construct($id = NULL){
             $this->db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
             if(!is_null($id)) {
@@ -33,7 +35,11 @@ define('USER_SALT', 'balloon coyote$1');
             }
         }
         
-        //This echos a json object with the users info based on his/her id
+        /**
+	* This populates the object with the users info based on his/her id
+	* @param INT $id ID of the user whose information is to be retrieved
+	* @return True if the user exists in the db, false otherwise
+	*/
         public function getUserById($id) {
             $attributes = $this->db->query("SELECT * FROM users WHERE user_id=?", array($id));
             if(isset($attributes[0])){
@@ -43,7 +49,12 @@ define('USER_SALT', 'balloon coyote$1');
             return FALSE;
         }
         
-        //this echos a json object with the users info based on the users email and password
+        /**
+	* This populates the object with the users info based on his/her email-password combination
+	* @param STRING $email Email of the user whose information is to be retrieved
+	* @param STRING $pwd Pre-hash password of the user whose information is to be retrieved
+	* @return True if the user exists in the db, false otherwise
+	*/
         public function getUserByEmailAndPassword($email, $pwd) {
             $attributes = $this->db->query("SELECT * FROM users WHERE email=? AND pswd=?", array($email, User::securePassword($pwd)));
             if(isset($attributes[0])){
@@ -53,7 +64,10 @@ define('USER_SALT', 'balloon coyote$1');
             return FALSE;
         }
     
-        //this sets all the User objects variables so that you can use them later if need be
+        /**
+	* this sets all the User objects variables so that you can use them later if need be
+	* @param ARRAY $dictionary Array that holds the attributes to be assigned to the user object
+	*/
         public function _set($dictionary) {
             $this->user_id = $dictionary['user_id'];
             $this->fName = $dictionary['fName'];
@@ -65,13 +79,19 @@ define('USER_SALT', 'balloon coyote$1');
             
         }
         
-        //this allows the user to update his password--calls the secure password static function for security before updating
+        /**
+	* this allows the user to update his password--calls the secure password static function for security before updating
+	* @param STRING $password Pre-hash password to be hashed
+	*/
         public function updatePassword($password) {
             $this->db->execute("UPDATE users SET pswd=? WHERE user_id=?", 
                 array(User::securePassword($password), $this->user_id));
         }
         
-        //checks if an email exists -- called in my add user function
+        /**
+	* checks if an email exists -- called in the add user function
+	* @param STRING $email Email to be checked for preexistance.
+	*/
         public static function emailExists($email) {
             $db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
             $attributes = $db->query("SELECT * FROM users WHERE users.email =?",array($email));
@@ -81,8 +101,16 @@ define('USER_SALT', 'balloon coyote$1');
             else return false;
         }
 
-        //this adds a new user to the database
-        //notice this is a static function so this can get called without having to instantiate a new user object
+	/**
+        * this adds a new user to the database
+        * notice this is a static function so this can get called without having to instantiate a new user object
+	* @param STRING $fName First name of the user
+	* @param STRING $lName Last name of the user
+	* @param STRING $creditProvider Credit card provider of the user
+	* @param INT $creditCardNum User's credit card number
+	* @param STRING $email User's email address
+	* @param STRING $password User's password pre-hash
+	*/
         public static function addUser($fName,$lName,$creditProvider,$creditCardNum,$email,$password){
             if(! User::emailExists($email)){
                 $db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
@@ -93,9 +121,11 @@ define('USER_SALT', 'balloon coyote$1');
             }
         }
             
-        //this is a static function(can be called without needing to instantiate a user object) that hashes the concatenation of the 
-        //selected password with the salt
-        //This is called in my add user function as well as in my update Password function
+        /**
+	* this is a static function that hashes the concatenation of the selected password with the salt
+        * This is called in the add user function as well as in the update Password function
+	* @param STRING $password Password to be hashed
+	*/
         public static function securePassword($password) {
             return md5($password.USER_SALT);
         }

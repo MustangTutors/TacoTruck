@@ -19,12 +19,16 @@ include_once "../DB.php";
         public $topping_type;
         private $db;
         
-        //this will get called automatically if a Toppings object is made
-        //just connects to the database to get it ready for the other functions
+	/**
+        * this will get called automatically if a Toppings object is made
+        * just connects to the database to get it ready for the other functions
+	*/
         function __construct(){
             $this->db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
         }
-        //this sets all the Topping objects variables so that you can use them later if need be
+        /**
+	* this sets all the Topping objects variables so that you can use them later if need be
+	* @param ARRAY $dictionary Array of the attributes of the topping
         public function _set($dictionary) {
             $this->topping_id = $dictionary['topping_id'];
             $this->topping_name = $dictionary['topping_name'];
@@ -33,7 +37,10 @@ include_once "../DB.php";
             $this->topping_type = $dictionary['topping_type'];
         }
 
-        //echos a json object holding topping's info from its ID
+	/**
+        * echos a json object holding topping's info from its type
+	* @param INT $toppingID ID of topping to be searched for
+	*/
         function getToppingById($toppingID){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE id=?", array($toppingID));
             if(isset($attributes[0])){
@@ -43,7 +50,10 @@ include_once "../DB.php";
             return FALSE;
         }
         
-        //echos a json object holding topping's info from its name
+	/**
+        * echos a json object holding topping's info from its name
+	* @param STRING $toppingName Name of topping to be searched for
+	*/
         public function getToppingByToppingName($toppingName){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_name = ?",array($toppingName));
             if(isset($attributes[0])){
@@ -53,7 +63,11 @@ include_once "../DB.php";
             }
             return FALSE;
         }
-        //echos a json object holding topping's info from its price
+
+	/**
+        * echos a json object holding topping's info from its price
+	* @param STRING $toppingPrice Price of topping to be searched for
+	*/
         public function getToppingByToppingPrice($toppingPrice){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_price = ?",array($toppingPrice));
             if(isset($attributes[0])){
@@ -63,7 +77,11 @@ include_once "../DB.php";
             }
             return FALSE;
         }
-        //echos a json object holding topping's info from its heat
+
+	/**
+        * echos a json object holding topping's info from its heat
+	* @param STRING $toppingHeat Heat of topping to be searched for
+	*/
         public function getToppingByToppingHeat($toppingHeat){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_heat = ?",array($toppingHeat));
             if(isset($attributes[0])){
@@ -73,7 +91,10 @@ include_once "../DB.php";
             }
             return FALSE;
         }
-        //echos a json object holding topping's info from its type
+	/**
+        * echos a json object holding topping's info from its type
+	* @param STRING $toppingType Type of topping to be searched for
+	*/
         public function getToppingByToppingType($toppingType){
             $attributes = $this->db->query("SELECT * FROM toppings WHERE topping_type = ?",array($toppingType));
             if(isset($attributes[0])){
@@ -92,7 +113,9 @@ include_once "../DB.php";
             return FALSE;
         }
 
-        //echos a json object holding all the toppings
+        /**
+	*echos a json object holding all the toppings
+	*/
         public function getAllToppings(){
 	echo "{ \"toppings\":[";     
 	$this->getToppingByToppingType("type");
