@@ -134,7 +134,7 @@
             <div id="paymentBox">
                 <div id="paymentForm">
                     <h2 class="heading">Payment</h2>
-                    <form>
+                    <form id="paymentSubmission">
                         <div id="paymentWindowPrice"></div>
                         <div>
                             <label for="first_name">First Name: *</label>
@@ -157,7 +157,7 @@
                             <input type="text" name="credit_number" id="payment_number" placeholder="Enter Credit Card Number" pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$" title="Must be valid, 16 digit credit card number. Ex: 1234567812345678" required>
                         </div>
                         <div class="center">
-                            <button class="button close" id="cancelPayment">Cancel</button>
+                            <a href="#" class="button close" id="cancelPayment">Cancel</a>
                             <input type="submit" class="button" id="submitPayment" value="Pay">
                         </div>
                     </form>
