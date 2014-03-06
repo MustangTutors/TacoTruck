@@ -19,12 +19,19 @@ $app->post('/orders/addOrder','addOrder' );
 $app->post('/AddNewUser','addUser');                
 $app->run();
 
+/**
+* Get information on all toppings of a given type
+* @param STRING $type The type of ingredient to retrieve information on.     
+*/
 function getToppingsByType($type){
     $topp = new Toppings();
     //if($type=="filling" || $type=="fillings") $type="type";
     $topp->getToppingByToppingType($type);
 }
 
+/**
+* Check to see if the email-password combination in the $_POST matches what's in the db and echos the account's data if it does.
+*/
 function validateUser(){
     $user = new User();
     $email = $_POST['email'];
@@ -34,10 +41,16 @@ function validateUser(){
     echo json_encode($user);
 }
 
+/**
+* Ends the session of the currently logged in user.
+*/
 function logOut(){
 	session_destroy();
 }
 
+/**
+* Retrieves the information of the currently logged in user.
+*/
 function getUserInfo(){
      $user=new User();
      if(!empty($_SESSION['user_id'])){
@@ -49,16 +62,27 @@ function getUserInfo(){
      }
 }
 
+/**
+* Get the last order of the specified user.
+* @param INT $userID ID of the user whose information will be retrieved.     
+*/
 function getLastOrder($userId){	
 	
    $order = new Order();
    $order->getLastOrderByUserId($userId);
 }
+
+/**
+* Get information of all truck locations.
+*/
 function getLocations(){
     $location = new Locations();
     $location->getLocations();
 }
 
+/**
+* Insert a user into the database with the info stored in $_POST.
+*/
 function addUser(){
     $id = User::addUser($_POST['fName'], $_POST['lName'], 
         $_POST['creditProvider'], $_POST['creditCardNum'], $_POST['email'],
@@ -66,6 +90,9 @@ function addUser(){
     echo json_encode($id);
  }
 
+/**
+* Insert an order into the database with the info from the JSON stored in $_POST.
+*/
 function addOrder(){
     $user_id = $_SESSION['user_id'];
     if (!empty($user_id)) {
@@ -88,6 +115,9 @@ function addOrder(){
     }
 }
 
+/**
+* Retrieve information on all toppings in the database.
+*/
 function getAllToppings(){
     $topp = new Toppings();
     $topp->getAllToppings();

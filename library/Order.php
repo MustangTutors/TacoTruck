@@ -15,12 +15,17 @@ include_once "../DB.php";
         public $order_dates;
         private $db;
         
-        //this will get called automatically if a Toppings object is made
-        //just connects to the database to get it ready for the other functions
+        /**
+	* this will get called automatically if a Toppings object is made
+        * just connects to the database to get it ready for the other functions
+	*/
         function __construct(){
             $this->db = new DB(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
         }
-        //echos a json object holding the Orders for a particular User ID
+        /**
+	* echos a json object holding the Orders for a particular User ID
+	* @param INT $userID id of the user whose orders are to be retrieved
+	*/
         public function getOrdersByUserId($userID){
             $query = "SELECT * FROM orders WHERE user_id = ?";
             $attributes = $this->db->query($query,array($userID));
@@ -30,7 +35,10 @@ include_once "../DB.php";
             }
             return FALSE;
         }
-        //echos a json object holding the last order based on the User ID
+        /**
+	* echos a json object holding the last order based on the User ID
+	* @param INT $userID id of the user whose last order is to be retrieved
+	*/
         public function getLastOrderByUserId($userID){
             $query = "SELECT t1.order_id, taco_id, quantity, topping_id, topping_type, topping_name, topping_price
  		      FROM(SELECT o1.order_id, o1.user_id, o1.order_dates 
@@ -74,7 +82,12 @@ include_once "../DB.php";
             return FALSE;
         }
         
-        //this adds an Order to the table
+        /**
+	* this adds an Order to the table
+	* @param INT $user_id ID of the user who is placing the order
+	* @param ARRAY $quantities Quantities of the tacos whose toppings are in the same index in $toppings
+	* @param ARRAY $toppings Two dimensional array holding the toppings of the tacos in the same index in $quantities as the first dimension of $toppings
+	*/
         public function addOrder($user_id,$quantities,$toppings){
             date_default_timezone_set('UTC');
             $date = getDate();
@@ -99,7 +112,10 @@ include_once "../DB.php";
         }
         
         
-        //this sets all the order objects variables so that you can use them later if need be
+        /**
+	* this sets all the order objects variables so that you can use them later if need be
+	* @param ARRAY $dictionary Attributes of the order retrieved from a MySQL query.
+	*/
         public function _set($dictionary) {
             $this->order_id = $dictionary['order_id'];
             $this->user_id = $dictionary['user_id'];
