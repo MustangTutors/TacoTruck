@@ -27,8 +27,9 @@ include_once "../DB.php";
             $this->db = new DB(DB_HOST, DB_USER,DB_PASSWORD,DB_NAME);
         }
         /**
-	* this sets all the Topping objects variables so that you can use them later if need be
-	* @param ARRAY $dictionary Array of the attributes of the topping
+    	* this sets all the Topping objects variables so that you can use them later if need be
+    	* @param ARRAY $dictionary Array of the attributes of the topping
+        */
         public function _set($dictionary) {
             $this->topping_id = $dictionary['topping_id'];
             $this->topping_name = $dictionary['topping_name'];
