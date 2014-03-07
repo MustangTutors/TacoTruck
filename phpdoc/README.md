@@ -1,2 +1,0 @@
-PHP API Documentation
-=====================
