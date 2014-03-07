@@ -104,6 +104,7 @@ header > a h1 {
     margin: 0px;
     color: #DBF8DA;
     text-shadow: 3px 3px rgba(82,73,40,0.5);
+    display: inline-block;
 }
 
 header a {

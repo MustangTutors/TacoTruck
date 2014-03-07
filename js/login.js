@@ -44,7 +44,7 @@ $(document).ready(function() {
 		        // Clear payment information
 		        $("#payment_first").val('');
 		        $("#payment_last").val('');
-		        $("#payment_provider select>option[value='Visa']").prop('selected',true);
+		        $("#payment_provider>option[value='Visa']").prop('selected',true);
 		        $("#payment_number").val('');
 
 		        updateTotalPrice();
@@ -72,7 +72,7 @@ function login(data){
     // Populate payment information
     $("#payment_first").val(data.fName);
 	$("#payment_last").val(data.lName);
-	$("#payment_provider select>option[value='" + data.credit_provider + "']").prop('selected',true);
+	$("#payment_provider>option[value='" + data.credit_provider + "']").prop('selected',true);
 	$("#payment_number").val(data.credit_number);
 
     // Clear previous order
