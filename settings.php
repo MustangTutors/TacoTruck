@@ -4,8 +4,8 @@
 
 $url = ($_SERVER['HTTP_HOST']);
 define ("DB_HOST","localhost");
-define ("DB_USER","root");
-define ("DB_PASSWORD","reverse");
+define ("DB_USER","taco");
+define ("DB_PASSWORD","taco");
 define ("DB_NAME","TacoTruck");/*
  //if it is not local use the settings for the production db
  if(strpos($url,"floccul") !== false){
